@@ -1,9 +1,0 @@
-C:\dev\CSInternal\CSInternal\ext\minhook\buffer.c;C:\dev\CSInternal\build\intermediates\buffer.obj
-C:\dev\CSInternal\CSInternal\ext\minhook\hde\hde32.c;C:\dev\CSInternal\build\intermediates\hde32.obj
-C:\dev\CSInternal\CSInternal\ext\minhook\hde\hde64.c;C:\dev\CSInternal\build\intermediates\hde64.obj
-C:\dev\CSInternal\CSInternal\ext\minhook\hook.c;C:\dev\CSInternal\build\intermediates\hook.obj
-C:\dev\CSInternal\CSInternal\ext\minhook\trampoline.c;C:\dev\CSInternal\build\intermediates\trampoline.obj
-C:\dev\CSInternal\CSInternal\src\core\hooks.cpp;C:\dev\CSInternal\build\intermediates\hooks.obj
-C:\dev\CSInternal\CSInternal\src\core\interfaces.cpp;C:\dev\CSInternal\build\intermediates\interfaces.obj
-C:\dev\CSInternal\CSInternal\src\dllmain.cpp;C:\dev\CSInternal\build\intermediates\dllmain.obj
-C:\dev\CSInternal\CSInternal\src\util\netvar.cpp;C:\dev\CSInternal\build\intermediates\netvar.obj
