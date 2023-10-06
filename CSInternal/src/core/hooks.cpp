@@ -49,7 +49,7 @@ bool __stdcall hooks::CreateMove(float frameTime, CUserCmd* cmd)
 	if (!trace.entity
 		|| !trace.entity->IsPlayer()
 		|| !trace.entity->IsAlive()
-		|| trace.entity->Team() == globals::localPlayer->Team()) {
+		|| !trace.entity->IsEnemy()) {
 		return false;
 	}
 

@@ -122,6 +122,9 @@
     <ClInclude Include="src\csgo\iclient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\csgo\cplayerinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\data.txt" />

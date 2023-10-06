@@ -186,6 +186,7 @@
     <ClInclude Include="src\core\globals.h" />
     <ClInclude Include="src\core\hooks.h" />
     <ClInclude Include="src\csgo\centity.h" />
+    <ClInclude Include="src\csgo\cplayerinfo.h" />
     <ClInclude Include="src\csgo\cusercmd.h" />
     <ClInclude Include="src\csgo\cvector.h" />
     <ClInclude Include="src\csgo\iclient.h" />

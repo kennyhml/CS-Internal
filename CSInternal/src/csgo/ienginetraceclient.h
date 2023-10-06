@@ -64,8 +64,10 @@ public:
 	int hitgroup;
 	char pad2[4];
 	CEntity* entity;
+	char bigPad[4];
 };
 
+// https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/public/engine/IEngineTrace.h#L148
 class IEngineTraceClient
 {
 public:
@@ -73,7 +75,7 @@ public:
 		const CRay& ray,
 		const std::uintptr_t mask,
 		const CTraceFilter& filter,
-		CTrace& trace) noexcept
+		CTrace& trace)
 	{
 		return memory::Call<void, const CRay&, const std::uintptr_t, const CTraceFilter&, CTrace&>(
 			this,

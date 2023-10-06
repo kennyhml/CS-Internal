@@ -15,6 +15,17 @@ public:
 	NETVAR(State, "CBasePlayer->m_lifeState", char);
 	NETVAR(ActiveWeaponHandle, "CBaseCombatCharacter->m_hActiveWeapon", int32_t);
 
+	int GetIndex()
+	{
+		return *reinterpret_cast<int*>(this + 0x64);
+	}
+
+	bool IsEnemy()
+	{
+		if (!globals::localPlayer) { return false; }
+		return Team() != globals::localPlayer->Team();
+	}
+
 	bool IsAlive()
 	{
 		return Health() != 0;

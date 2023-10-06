@@ -4,7 +4,6 @@
 class CWeapon
 {
 public:
-
 	NETVAR(State, "CBaseCombatWeapon->m_iState", int32_t);
 	NETVAR(Clip1Ammo, "CBaseCombatWeapon->m_iClip1", int32_t);
 	NETVAR(Clip2Ammo, "CBaseCombatWeapon->m_iClip2", int32_t);

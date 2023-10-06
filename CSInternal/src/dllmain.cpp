@@ -18,18 +18,13 @@ void MainThread(HMODULE instance)
 	SetupNetvars();
 	hooks::Init();
 
+	globals::localPlayer = interfaces::entityList->GetClientEntityFromIndex(interfaces::engine->GetLocalPlayerIndex());
+
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
-
-		Sleep(100);
-		continue;
-
 		for (int i = 1; i <= 64; ++i) {
 
 			const auto entity = interfaces::entityList->GetClientEntityFromIndex(i);
-			if (!entity || entity->Dead()) { continue; }
-
-			CWeapon* weapon = (CWeapon*)interfaces::entityList->GetClientEntityFromHandle(entity->ActiveWeaponHandle());
-			std::cout << std::dec << weapon->Clip1Ammo() << std::endl;
+			if (!entity || entity->Dead() || !entity->IsEnemy() || !entity->IsPlayer()) { continue; }
 		}
 	}
 
