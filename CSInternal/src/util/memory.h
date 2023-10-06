@@ -1,7 +1,6 @@
 #pragma once
 #include <cstdint>
 
-
 namespace memory
 {
 	template <typename Return, typename ... Args>
@@ -15,15 +14,4 @@ namespace memory
 	{
 		return (*static_cast<void***>(_this))[index];
 	}
-
-
-
-
-
-
-
-
-
-
-
 }

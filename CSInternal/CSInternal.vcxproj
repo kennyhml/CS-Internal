@@ -71,20 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)\build\</OutDir>
-    <IntDir>$(SolutionDir)\build\intermediates</IntDir>
+    <OutDir>$(SolutionDir)\CSInternal\bin\</OutDir>
+    <IntDir>$(SolutionDir)\CSInternal\bin\intermediates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)\build\</OutDir>
-    <IntDir>$(SolutionDir)\build\intermediates</IntDir>
+    <OutDir>$(SolutionDir)\CSInternal\bin\</OutDir>
+    <IntDir>$(SolutionDir)\CSInternal\bin\intermediates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)\build\</OutDir>
-    <IntDir>$(SolutionDir)\build\intermediates</IntDir>
+    <OutDir>$(SolutionDir)\CSInternal\bin\</OutDir>
+    <IntDir>$(SolutionDir)\CSInternal\bin\intermediates\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)\build\</OutDir>
-    <IntDir>$(SolutionDir)\build\intermediates</IntDir>
+    <OutDir>$(SolutionDir)\CSInternal\bin\</OutDir>
+    <IntDir>$(SolutionDir)\CSInternal\bin\intermediates\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -171,6 +171,7 @@
     <ClCompile Include="src\core\hooks.cpp" />
     <ClCompile Include="src\core\interfaces.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="src\util\hash.cpp" />
     <ClCompile Include="src\util\netvar.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -193,7 +194,7 @@
     <ClInclude Include="src\csgo\ienginetraceclient.h" />
     <ClInclude Include="src\csgo\datatable.h" />
     <ClInclude Include="src\entity.h" />
-    <ClInclude Include="src\util\fnv.h" />
+    <ClInclude Include="src\util\hash.h" />
     <ClInclude Include="src\geometry.h" />
     <ClInclude Include="src\core\interfaces.h" />
     <ClInclude Include="src\util\netvar.h" />

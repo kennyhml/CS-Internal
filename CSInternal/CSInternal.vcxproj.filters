@@ -42,6 +42,9 @@
     <ClCompile Include="ext\minhook\trampoline.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\util\hash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\interfaces.h">
@@ -53,7 +56,7 @@
     <ClInclude Include="src\csgo\datatable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\fnv.h">
+    <ClInclude Include="src\util\hash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\util\netvar.h">
