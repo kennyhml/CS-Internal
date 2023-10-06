@@ -1,27 +1,12 @@
 #define WIN32LEAN_AND_MEAN
 #include <Windows.h>
-#include "interfaces.h"
+#include "core/interfaces.h"
 #include <iostream>
 #include "geometry.h"
-#include "weapon.h"
+#include "csgo/cweapon.h"
+#include "core/hooks.h"
 
 FILE* fConsole = nullptr;
-
-template <typename T>
-T* GetInterface(const char* name, const char* moduleName)
-{
-	HMODULE handle = GetModuleHandle(moduleName);
-
-	if (!handle) { return nullptr; }
-
-	uintptr_t addr = reinterpret_cast<uintptr_t>(GetProcAddress(handle, "CreateInterface"));
-	if (!addr) { return nullptr; }
-
-	using Fn = T * (*)(const char*, int*);
-	const auto CreateInterface = reinterpret_cast<Fn>(addr);
-
-	return CreateInterface(name, nullptr);
-}
 
 void MainThread(HMODULE instance)
 {
@@ -29,25 +14,26 @@ void MainThread(HMODULE instance)
 	freopen_s(&fConsole, "CONOUT$", "w", stdout);
 	std::cout << "DLL injected!\n";
 
-	client = GetInterface<IClient>("VClient018", "client.dll");
-	entityList = GetInterface<IEntityList>("VClientEntityList003", "client.dll");
-
-	uintptr_t clientBase = reinterpret_cast<uintptr_t>(GetModuleHandle("client.dll"));
-
+	interfaces::Init();
 	SetupNetvars();
+	hooks::Init();
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
+
+		Sleep(100);
+		continue;
+
 		for (int i = 1; i <= 64; ++i) {
 
-			const auto entity = entityList->GetClientEntity(i);
+			const auto entity = interfaces::entityList->GetClientEntityFromIndex(i);
 			if (!entity || entity->Dead()) { continue; }
 
-			int weaponIndex = entity->GetActiveIndex();
-			Weapon* weapon = (Weapon*)entityList->GetClientEntityFromHandle(entity->ActiveWeaponHandle());
+			CWeapon* weapon = (CWeapon*)interfaces::entityList->GetClientEntityFromHandle(entity->ActiveWeaponHandle());
 			std::cout << std::dec << weapon->Clip1Ammo() << std::endl;
 		}
 	}
 
+	hooks::Destroy();
 	if (fConsole) { fclose(fConsole); }
 	FreeConsole();
 	FreeLibraryAndExitThread(instance, 0);
