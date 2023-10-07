@@ -1,6 +1,6 @@
 #pragma once
 #include "../util/memory.h"
-#include "cvector.h"
+#include "vector.h"
 #include "cusercmd.h"
 #include "cplayerinfo.h"
 
@@ -23,8 +23,8 @@ public:
 		return memory::Call<int>(this, 12);
 	}
 
-	void SetViewAngles(const CVector& viewAngles)
+	void SetViewAngles(const Vector3& viewAngles)
 	{
-		memory::Call<void, const CVector&>(this, 19, viewAngles);
+		memory::Call<void, const Vector3&>(this, 19, viewAngles);
 	}
 };

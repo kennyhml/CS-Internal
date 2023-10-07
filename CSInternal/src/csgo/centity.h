@@ -1,8 +1,8 @@
 #pragma once
 #include "../util/memory.h"
-#include "../util/netvar.h"
+#include "../core/netvar.h"
 
-#include "cvector.h"
+#include "vector.h"
 
 class CEntity
 {
@@ -11,7 +11,7 @@ public:
 	NETVAR(Dead, "CBasePlayer->deadflag", bool);
 	NETVAR(Health, "CBasePlayer->m_iHealth", int32_t);
 	NETVAR(Team, "CBaseEntity->m_iTeamNum", int32_t);
-	NETVAR(Velocity, "CBasePlayer->m_vecVelocity[0]", CVector);
+	NETVAR(Velocity, "CBasePlayer->m_vecVelocity[0]", Vector3);
 	NETVAR(State, "CBasePlayer->m_lifeState", char);
 	NETVAR(ActiveWeaponHandle, "CBaseCombatCharacter->m_hActiveWeapon", int32_t);
 
@@ -36,13 +36,13 @@ public:
 		return memory::Call<bool>(this, 158);
 	}
 
-	void GetEyePosition(CVector& eyePosOut)
+	void GetEyePosition(Vector3& eyePosOut)
 	{
-		memory::Call<void, CVector&>(this, 285, eyePosOut);
+		memory::Call<void, Vector3&>(this, 285, eyePosOut);
 	}
 
-	void GetAimPunch(CVector& aimPunchOut)
+	void GetAimPunch(Vector3& aimPunchOut)
 	{
-		memory::Call<void, CVector&>(this, 346, aimPunchOut);
+		memory::Call<void, Vector3&>(this, 346, aimPunchOut);
 	}
 };

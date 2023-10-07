@@ -172,7 +172,8 @@
     <ClCompile Include="src\core\interfaces.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\util\hash.cpp" />
-    <ClCompile Include="src\util\netvar.cpp" />
+    <ClCompile Include="src\util\memory.cpp" />
+    <ClCompile Include="src\core\netvar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\minhook\buffer.h" />
@@ -188,17 +189,27 @@
     <ClInclude Include="src\csgo\centity.h" />
     <ClInclude Include="src\csgo\cplayerinfo.h" />
     <ClInclude Include="src\csgo\cusercmd.h" />
-    <ClInclude Include="src\csgo\cvector.h" />
+    <ClInclude Include="src\csgo\sound.h" />
+    <ClInclude Include="src\csgo\utlvector.h" />
+    <ClInclude Include="src\csgo\vector.h" />
+    <ClInclude Include="src\csgo\entity\calphaproperty.h" />
+    <ClInclude Include="src\csgo\entity\cnetworkable.h" />
+    <ClInclude Include="src\csgo\entity\crenderable.h" />
+    <ClInclude Include="src\csgo\entity\cthinkable.h" />
+    <ClInclude Include="src\csgo\entity\cunknown.h" />
+    <ClInclude Include="src\csgo\entity\centity.h" />
+    <ClInclude Include="src\csgo\entity\handlentity.h" />
     <ClInclude Include="src\csgo\iclient.h" />
     <ClInclude Include="src\csgo\icliententitylist.h" />
     <ClInclude Include="src\csgo\iengineclient.h" />
     <ClInclude Include="src\csgo\ienginetraceclient.h" />
     <ClInclude Include="src\csgo\datatable.h" />
+    <ClInclude Include="src\csgo\matrix.h" />
     <ClInclude Include="src\entity.h" />
     <ClInclude Include="src\util\hash.h" />
     <ClInclude Include="src\geometry.h" />
     <ClInclude Include="src\core\interfaces.h" />
-    <ClInclude Include="src\util\netvar.h" />
+    <ClInclude Include="src\core\netvar.h" />
     <ClInclude Include="src\util\memory.h" />
     <ClInclude Include="src\csgo\cweapon.h" />
   </ItemGroup>

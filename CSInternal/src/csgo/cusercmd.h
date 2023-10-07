@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include "cvector.h"
+#include "vector.h"
 
 enum ECommandButton : std::int32_t
 {
@@ -38,8 +38,8 @@ public:
 	void* vmt;
 	std::int32_t commandNumber;
 	std::int32_t tickCount;
-	CVector viewAngles;
-	CVector aimDirection;
+	Vector3 viewAngles;
+	Vector3 aimDirection;
 	float forwardMove;
 	float sideMove;
 	float upMove;
@@ -51,6 +51,6 @@ public:
 	short mouseDeltaX;
 	short mouseDeltaY;
 	bool hasBeenPredicted;
-	CVector headAngles;
-	CVector headOffset;
+	Vector3 headAngles;
+	Vector3 headOffset;
 };

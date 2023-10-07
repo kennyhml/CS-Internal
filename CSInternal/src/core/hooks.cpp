@@ -35,13 +35,13 @@ bool __stdcall hooks::CreateMove(float frameTime, CUserCmd* cmd)
 
 	if (!globals::localPlayer || !globals::localPlayer->IsAlive()) { return false; }
 
-	CVector eyePos;
+	Vector3 eyePos;
 	globals::localPlayer->GetEyePosition(eyePos);
 
-	CVector aimPunch;
+	Vector3 aimPunch;
 	globals::localPlayer->GetAimPunch(aimPunch);
 
-	CVector dst = eyePos + CVector{ cmd->viewAngles + aimPunch }.ToVector() * 5000.f;
+	Vector3 dst = eyePos + Vector3{ cmd->viewAngles + aimPunch }.ToVector3() * 5000.f;
 
 	CTrace trace;
 	interfaces::trace->TraceRay({ eyePos, dst }, 0x46004009, globals::localPlayer, trace);

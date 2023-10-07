@@ -1,4 +1,4 @@
-#include "../core/interfaces.h"
+#include "interfaces.h"
 #include "netvar.h"
 #include <ctype.h>
 #include <format>

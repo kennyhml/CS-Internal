@@ -1,6 +1,6 @@
 #pragma once
 #include "../csgo/datatable.h"
-#include "hash.h"
+#include "../util/hash.h"
 #include <unordered_map>
 #include <iostream>
 

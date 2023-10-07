@@ -18,7 +18,7 @@
     <ClCompile Include="src\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\util\netvar.cpp">
+    <ClCompile Include="src\core\netvar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\interfaces.cpp">
@@ -45,6 +45,9 @@
     <ClCompile Include="src\util\hash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\util\memory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\interfaces.h">
@@ -59,7 +62,7 @@
     <ClInclude Include="src\util\hash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\netvar.h">
+    <ClInclude Include="src\core\netvar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\geometry.h">
@@ -83,7 +86,7 @@
     <ClInclude Include="src\csgo\cusercmd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\csgo\cvector.h">
+    <ClInclude Include="src\csgo\vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\csgo\icliententitylist.h">
@@ -123,6 +126,36 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\csgo\cplayerinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cnetworkable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cunknown.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\handlentity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cthinkable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\calphaproperty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\centity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\crenderable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\sound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\utlvector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

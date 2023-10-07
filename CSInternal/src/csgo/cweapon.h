@@ -1,5 +1,5 @@
 #pragma once
-#include "../util/netvar.h"
+#include "../core/netvar.h"
 
 class CWeapon
 {

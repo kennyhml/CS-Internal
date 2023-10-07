@@ -2,12 +2,12 @@
 #include "../util/memory.h"
 
 #include "centity.h"
-#include "cvector.h"
+#include "vector.h"
 
 class CRay
 {
 public:
-	CRay(const CVector& src, const CVector& dst) noexcept
+	CRay(const Vector3& src, const Vector3& dst) noexcept
 	{
 		start = src;
 		delta = dst - src;
@@ -15,9 +15,9 @@ public:
 	}
 
 private:
-	CVector start;
+	Vector3 start;
 	char pad0[4]{ };
-	CVector delta;
+	Vector3 delta;
 	char pad1[40]{ };
 	bool isRay{ true };
 	bool isSwept;
@@ -47,8 +47,8 @@ public:
 class CTrace
 {
 public:
-	CVector start;
-	CVector end;
+	Vector3 start;
+	Vector3 end;
 	char pad[20];
 	float fraction;
 	int contents;

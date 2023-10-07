@@ -1796,3 +1796,7 @@ CBaseWeaponWorldModel->m_nBody: a20
 CBaseWeaponWorldModel->m_fEffects: f0
 CBaseWeaponWorldModel->moveparent: 148
 CBaseWeaponWorldModel->m_hCombatWeaponParent: 2a00
+
+
+setAbsOrigin = 55 8B EC 83 E4 F8 51 53 56 57 8B F1 E8 ?? ?? ?? ?? 8B 7D 08 F3 0F 10 07 0F 2E 86 A0 00 00 00 9F F6 C4 44 7A 28 F3 0F 10 47 04 0F 2E 86 A4 00 00 00 9F F6 C4 44 7A 16 F3 0F 10 47 08 0F 2E 86 A8 00 00 00 9F F6 C4 44 0F 8B 69
+
