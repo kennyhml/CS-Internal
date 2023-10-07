@@ -186,11 +186,21 @@
     <ClInclude Include="ext\minhook\trampoline.h" />
     <ClInclude Include="src\core\globals.h" />
     <ClInclude Include="src\core\hooks.h" />
-    <ClInclude Include="src\csgo\centity.h" />
-    <ClInclude Include="src\csgo\cplayerinfo.h" />
+    <ClInclude Include="src\csgo\entity\cbaseweaponworldmodel.h" />
+    <ClInclude Include="src\csgo\entity\cbaseanimating.h" />
+    <ClInclude Include="src\csgo\entity\cbaseattributableitem.h" />
+    <ClInclude Include="src\csgo\entity\cbasebflex.h" />
+    <ClInclude Include="src\csgo\entity\cbasecombatcharacter.h" />
+    <ClInclude Include="src\csgo\entity\cbasecombatweapon.h" />
+    <ClInclude Include="src\csgo\entity\cbaseentity.h" />
+    <ClInclude Include="src\csgo\entity\cbaseplayer.h" />
+    <ClInclude Include="src\csgo\entity\cbaseviewmodel.h" />
+    <ClInclude Include="src\csgo\entity\ccsplayer.h" />
+    <ClInclude Include="src\csgo\entity\cplayerinfo.h" />
     <ClInclude Include="src\csgo\cusercmd.h" />
     <ClInclude Include="src\csgo\entity\collideable.h" />
-    <ClInclude Include="src\csgo\entity\entity.h" />
+    <ClInclude Include="src\csgo\entity\csplayerresource.h" />
+    <ClInclude Include="src\csgo\sdk.h" />
     <ClInclude Include="src\csgo\sound.h" />
     <ClInclude Include="src\csgo\utlvector.h" />
     <ClInclude Include="src\csgo\vector.h" />
@@ -213,7 +223,6 @@
     <ClInclude Include="src\core\interfaces.h" />
     <ClInclude Include="src\core\netvar.h" />
     <ClInclude Include="src\tools\memory.h" />
-    <ClInclude Include="src\csgo\cweapon.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\data.txt" />

@@ -2,12 +2,10 @@
 #include "../tools/memory.h"
 #include "vector.h"
 #include "cusercmd.h"
-#include "cplayerinfo.h"
+#include "entity/cplayerinfo.h"
 
-class IEngineClient
+struct IEngineClient
 {
-public:
-
 	bool IsInGame()
 	{
 		return memory::Call<bool>(this, 27);

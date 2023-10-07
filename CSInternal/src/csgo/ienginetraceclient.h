@@ -1,7 +1,7 @@
 #pragma once
 #include "../tools/memory.h"
 
-#include "centity.h"
+#include "../csgo/sdk.h"
 #include "vector.h"
 
 class CRay
@@ -63,7 +63,7 @@ public:
 	} surface;
 	int hitgroup;
 	char pad2[4];
-	CEntity* entity;
+	CBaseEntity* entity;
 	char bigPad[4];
 };
 

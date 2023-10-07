@@ -1,8 +1,8 @@
 #pragma once
 
-class CSPlayer;
+struct CCSPlayer;
 
 namespace globals
 {
-	inline CSPlayer* localPlayer = nullptr;
+	inline CCSPlayer* localPlayer = nullptr;
 }

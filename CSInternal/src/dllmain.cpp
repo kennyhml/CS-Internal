@@ -3,7 +3,7 @@
 #include "core/interfaces.h"
 #include <iostream>
 #include "geometry.h"
-#include "csgo/cweapon.h"
+#include "csgo/sdk.h"
 #include "core/hooks.h"
 
 FILE* fConsole = nullptr;
@@ -18,21 +18,21 @@ void MainThread(HMODULE instance)
 	SetupNetvars();
 	hooks::Init();
 
-	globals::localPlayer = reinterpret_cast<CSPlayer*>(interfaces::entityList->GetClientEntityFromIndex(interfaces::engine->GetLocalPlayerIndex()));
+	globals::localPlayer = interfaces::entityList->FromIndex<CCSPlayer*>(interfaces::engine->GetLocalPlayerIndex());
+
+	auto lp = globals::localPlayer;
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
+
 		for (int i = 1; i <= 64; ++i) {
 
-			const auto entity = reinterpret_cast<CSPlayer*>(interfaces::entityList->GetClientEntityFromIndex(i));
-			if (!entity
-				|| entity->IsDead()
-				|| entity->GetTeam() == globals::localPlayer->GetTeam()
-				|| !entity->IsPlayer()) {
-				continue;
-			}
+			const auto entity = interfaces::entityList->FromIndex<CCSPlayer*>(i);
+			if (!entity || !entity->IsPlayer()) { continue; }
 
-			std::cout << entity->GetHealth() << "\n";
+			CPlayerInfo info;
+			interfaces::engine->GetPlayerInfo(entity->GetIndex(), &info);
 
+			std::cout << info.name << ": " << entity->Health() << " HP, " << entity->ArmorValue() << " Armor\n";
 		}
 	}
 

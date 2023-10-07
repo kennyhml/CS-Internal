@@ -68,9 +68,6 @@
     <ClInclude Include="src\geometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\csgo\cweapon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\core\hooks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -78,9 +75,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\tools\memory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\csgo\centity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\csgo\cusercmd.h">
@@ -125,7 +119,7 @@
     <ClInclude Include="src\csgo\iclient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\csgo\cplayerinfo.h">
+    <ClInclude Include="src\csgo\entity\cplayerinfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\csgo\entity\cnetworkable.h">
@@ -161,7 +155,40 @@
     <ClInclude Include="src\csgo\entity\collideable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\csgo\entity\entity.h">
+    <ClInclude Include="src\csgo\sdk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cbaseentity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cbaseanimating.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cbasebflex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cbasecombatcharacter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cbaseplayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\ccsplayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\csplayerresource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cbasecombatweapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cbaseattributableitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cbaseviewmodel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\cbaseweaponworldmodel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
