@@ -1,8 +1,8 @@
 #pragma once
 
-class CEntity;
+class CSPlayer;
 
 namespace globals
 {
-	inline CEntity* localPlayer = nullptr;
+	inline CSPlayer* localPlayer = nullptr;
 }

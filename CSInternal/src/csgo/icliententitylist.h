@@ -1,9 +1,8 @@
 #pragma once
-#include "centity.h"
+#include "entity/entity.h"
 
-class IClientEntityList
+struct IClientEntityList
 {
-public:
 	CEntity* GetClientEntityFromIndex(int index)
 	{
 		return memory::Call<CEntity*>(this, 3, index);

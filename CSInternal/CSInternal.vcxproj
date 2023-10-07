@@ -171,8 +171,8 @@
     <ClCompile Include="src\core\hooks.cpp" />
     <ClCompile Include="src\core\interfaces.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
-    <ClCompile Include="src\util\hash.cpp" />
-    <ClCompile Include="src\util\memory.cpp" />
+    <ClCompile Include="src\tools\hash.cpp" />
+    <ClCompile Include="src\tools\memory.cpp" />
     <ClCompile Include="src\core\netvar.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +189,8 @@
     <ClInclude Include="src\csgo\centity.h" />
     <ClInclude Include="src\csgo\cplayerinfo.h" />
     <ClInclude Include="src\csgo\cusercmd.h" />
+    <ClInclude Include="src\csgo\entity\collideable.h" />
+    <ClInclude Include="src\csgo\entity\entity.h" />
     <ClInclude Include="src\csgo\sound.h" />
     <ClInclude Include="src\csgo\utlvector.h" />
     <ClInclude Include="src\csgo\vector.h" />
@@ -206,11 +208,11 @@
     <ClInclude Include="src\csgo\datatable.h" />
     <ClInclude Include="src\csgo\matrix.h" />
     <ClInclude Include="src\entity.h" />
-    <ClInclude Include="src\util\hash.h" />
+    <ClInclude Include="src\tools\hash.h" />
     <ClInclude Include="src\geometry.h" />
     <ClInclude Include="src\core\interfaces.h" />
     <ClInclude Include="src\core\netvar.h" />
-    <ClInclude Include="src\util\memory.h" />
+    <ClInclude Include="src\tools\memory.h" />
     <ClInclude Include="src\csgo\cweapon.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
 #pragma once
-#include "../util/memory.h"
+#include "../tools/memory.h"
 
 #include "centity.h"
 #include "vector.h"

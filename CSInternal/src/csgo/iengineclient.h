@@ -1,5 +1,5 @@
 #pragma once
-#include "../util/memory.h"
+#include "../tools/memory.h"
 #include "vector.h"
 #include "cusercmd.h"
 #include "cplayerinfo.h"

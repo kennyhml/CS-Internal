@@ -42,10 +42,10 @@
     <ClCompile Include="ext\minhook\trampoline.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\util\hash.cpp">
+    <ClCompile Include="src\tools\hash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\util\memory.cpp">
+    <ClCompile Include="src\tools\memory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +59,7 @@
     <ClInclude Include="src\csgo\datatable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\hash.h">
+    <ClInclude Include="src\tools\hash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\netvar.h">
@@ -77,7 +77,7 @@
     <ClInclude Include="src\core\globals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\memory.h">
+    <ClInclude Include="src\tools\memory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\csgo\centity.h">
@@ -156,6 +156,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\csgo\utlvector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\collideable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\entity\entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

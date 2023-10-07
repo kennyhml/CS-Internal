@@ -18,13 +18,21 @@ void MainThread(HMODULE instance)
 	SetupNetvars();
 	hooks::Init();
 
-	globals::localPlayer = interfaces::entityList->GetClientEntityFromIndex(interfaces::engine->GetLocalPlayerIndex());
+	globals::localPlayer = reinterpret_cast<CSPlayer*>(interfaces::entityList->GetClientEntityFromIndex(interfaces::engine->GetLocalPlayerIndex()));
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
 		for (int i = 1; i <= 64; ++i) {
 
-			const auto entity = interfaces::entityList->GetClientEntityFromIndex(i);
-			if (!entity || entity->Dead() || !entity->IsEnemy() || !entity->IsPlayer()) { continue; }
+			const auto entity = reinterpret_cast<CSPlayer*>(interfaces::entityList->GetClientEntityFromIndex(i));
+			if (!entity
+				|| entity->IsDead()
+				|| entity->GetTeam() == globals::localPlayer->GetTeam()
+				|| !entity->IsPlayer()) {
+				continue;
+			}
+
+			std::cout << entity->GetHealth() << "\n";
+
 		}
 	}
 
