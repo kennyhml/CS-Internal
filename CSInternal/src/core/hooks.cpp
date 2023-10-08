@@ -1,16 +1,18 @@
 #include "hooks.h"
+#include "interfaces.h"
 #include "../../ext/minhook/MinHook.h"
+#include "../tools/memory.h"
+#include "../csgo/cusercmd.h"
 
 void hooks::Init()
 {
 	MH_Initialize();
 
 	MH_CreateHook(
-		memory::Get(interfaces::clientMode, 24),
+		memory::GetVmtFn(interfaces::clientMode, 24),
 		&CreateMove,
 		reinterpret_cast<void**>(&oCreateMove)
 	);
-
 	MH_EnableHook(MH_ALL_HOOKS);
 }
 

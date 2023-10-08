@@ -1,11 +1,11 @@
 #pragma once
 #include "globals.h"
-
-#include "../csgo/icliententitylist.h"
-#include "../csgo/iengineclient.h"
-#include "../csgo/ienginetraceclient.h"
-#include "../csgo/iclient.h"
-
+#include "../csgo/interfaces/icliententitylist.h"
+#include "../csgo/interfaces/iengineclient.h"
+#include "../csgo/interfaces/ienginetraceclient.h"
+#include "../csgo/interfaces/iclient.h"
+#include "../csgo/interfaces/iweaponsystem.h"
+#include "../csgo/interfaces/iclientmode.h"
 
 namespace interfaces
 {
@@ -17,7 +17,8 @@ namespace interfaces
 	inline IClientEntityList* entityList = nullptr;
 	inline IEngineClient* engine = nullptr;
 	inline IEngineTraceClient* trace = nullptr;
+	inline IWeaponSystem* weapons = nullptr;
 
 	inline IClient* client = nullptr;
-	inline void* clientMode = nullptr;
+	inline IClientMode* clientMode = nullptr;
 }

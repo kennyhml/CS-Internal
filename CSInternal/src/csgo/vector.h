@@ -13,9 +13,6 @@ constexpr float Rad2Deg(float radians)
 	return radians * (180.0f / std::numbers::pi_v<float>);
 }
 
-
-
-
 struct Vector2
 {
 	float x, y;

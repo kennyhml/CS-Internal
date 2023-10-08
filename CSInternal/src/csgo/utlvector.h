@@ -66,17 +66,14 @@ struct UtlMemory
 
 		allocationCount = newAllocationCount;
 
-		if (memory != nullptr)
-		{
-			//pMemory = reinterpret_cast<T*>(I::MemAlloc->Realloc(pMemory, iAllocationCount * sizeof(T)));
-
+		if (memory != nullptr) {
 			std::byte* data = new std::byte[allocationCount * sizeof(T)];
 			memcpy(data, memory, oldAllocationCount * sizeof(T));
 			memory = reinterpret_cast<T*>(data);
 		}
-		else
-			//pMemory = reinterpret_cast<T*>(I::MemAlloc->Alloc(iAllocationCount * sizeof(T)));
-			memory = reinterpret_cast<T*>(new std::byte[allocationCount * sizeof(T)]);
+		else {
+		}
+		memory = reinterpret_cast<T*>(new std::byte[allocationCount * sizeof(T)]);
 	}
 
 	bool IsExternallyAllocated() const

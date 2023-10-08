@@ -1,12 +1,12 @@
 #pragma once
-#include "../tools/memory.h"
+#include "../../tools/memory.h"
+#include "../vector.h"
 
-#include "../csgo/sdk.h"
-#include "vector.h"
+struct CEntity;
+struct CBaseEntity;
 
-class CRay
+struct CRay
 {
-public:
 	CRay(const Vector3& src, const Vector3& dst) noexcept
 	{
 		start = src;
@@ -23,9 +23,8 @@ private:
 	bool isSwept;
 };
 
-class CTraceFilter
+struct CTraceFilter
 {
-public:
 	CTraceFilter(const CEntity* entity) noexcept
 	{
 		skip = entity;
@@ -44,9 +43,8 @@ public:
 	const CEntity* skip;
 };
 
-class CTrace
+struct CTrace
 {
-public:
 	Vector3 start;
 	Vector3 end;
 	char pad[20];
@@ -68,16 +66,15 @@ public:
 };
 
 // https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/public/engine/IEngineTrace.h#L148
-class IEngineTraceClient
+struct IEngineTraceClient
 {
-public:
 	void TraceRay(
 		const CRay& ray,
 		const std::uintptr_t mask,
 		const CTraceFilter& filter,
 		CTrace& trace)
 	{
-		return memory::Call<void, const CRay&, const std::uintptr_t, const CTraceFilter&, CTrace&>(
+		return memory::CallVmtFn<void, const CRay&, const std::uintptr_t, const CTraceFilter&, CTrace&>(
 			this,
 			5,
 			ray,

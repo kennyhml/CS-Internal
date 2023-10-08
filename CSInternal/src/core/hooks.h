@@ -1,5 +1,6 @@
 #pragma once
 #include "interfaces.h"
+struct CUserCmd;
 
 namespace hooks
 {

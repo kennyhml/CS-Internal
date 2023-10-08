@@ -18,4 +18,8 @@ struct CCSPlayer : public CBasePlayer
 	NETVAR(HasNightVision, "CCSPlayer->m_bHasNightVision", bool);
 	NETVAR(FlashDuration, "CCSPlayer->m_flFlashDuration", float);
 	NETVAR(Strafing, "CCSPlayer->m_bStrafing", bool);
+	NETVAR(MatchKills, "CCSPlayer->m_iMatchStats_Kills", int32_t);
+	NETVAR(MatchDamage, "CCSPlayer->m_iMatchStats_Damage", int32_t);
+	NETVAR(MatchEnemiesFlashed, "CCSPlayer->m_iMatchStats_EnemiesFlashed", int32_t);
+	NETVAR(MoveState, "CCSPlayer->m_iMoveState", int32_t);
 };

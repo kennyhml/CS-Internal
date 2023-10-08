@@ -186,6 +186,8 @@
     <ClInclude Include="ext\minhook\trampoline.h" />
     <ClInclude Include="src\core\globals.h" />
     <ClInclude Include="src\core\hooks.h" />
+    <ClInclude Include="src\csgo\entity\cweapondata.h" />
+    <ClInclude Include="src\csgo\interfaces\iclientmode.h" />
     <ClInclude Include="src\csgo\entity\cbaseweaponworldmodel.h" />
     <ClInclude Include="src\csgo\entity\cbaseanimating.h" />
     <ClInclude Include="src\csgo\entity\cbaseattributableitem.h" />
@@ -200,6 +202,8 @@
     <ClInclude Include="src\csgo\cusercmd.h" />
     <ClInclude Include="src\csgo\entity\collideable.h" />
     <ClInclude Include="src\csgo\entity\csplayerresource.h" />
+    <ClInclude Include="src\csgo\interfaces\iweaponsystem.h" />
+    <ClInclude Include="src\csgo\panel.h" />
     <ClInclude Include="src\csgo\sdk.h" />
     <ClInclude Include="src\csgo\sound.h" />
     <ClInclude Include="src\csgo\utlvector.h" />
@@ -211,10 +215,10 @@
     <ClInclude Include="src\csgo\entity\cunknown.h" />
     <ClInclude Include="src\csgo\entity\centity.h" />
     <ClInclude Include="src\csgo\entity\handlentity.h" />
-    <ClInclude Include="src\csgo\iclient.h" />
-    <ClInclude Include="src\csgo\icliententitylist.h" />
-    <ClInclude Include="src\csgo\iengineclient.h" />
-    <ClInclude Include="src\csgo\ienginetraceclient.h" />
+    <ClInclude Include="src\csgo\interfaces\iclient.h" />
+    <ClInclude Include="src\csgo\interfaces\icliententitylist.h" />
+    <ClInclude Include="src\csgo\interfaces\iengineclient.h" />
+    <ClInclude Include="src\csgo\interfaces\ienginetraceclient.h" />
     <ClInclude Include="src\csgo\datatable.h" />
     <ClInclude Include="src\csgo\matrix.h" />
     <ClInclude Include="src\entity.h" />

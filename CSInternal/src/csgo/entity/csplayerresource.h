@@ -1,7 +1,7 @@
 #pragma once
 #include "cbaseentity.h"
 
-struct CSPlayerResource : public CBaseEntity
+struct CCSPlayerResource : public CBaseEntity
 {
 	NETVAR(PlayerC4, "CCSPlayerResource->m_iPlayerC4", int);
 	NETVAR(PlayerVIP, "CCSPlayerResource->m_iPlayerVIP", int);

@@ -1,6 +1,7 @@
 #include "interfaces.h"
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
+#include "../tools/memory.h"
 
 void interfaces::Init()
 {
@@ -9,7 +10,8 @@ void interfaces::Init()
 	engine = GetInterface<IEngineClient>("VEngineClient014", "engine.dll");
 	trace = GetInterface<IEngineTraceClient>("EngineTraceClient004", "engine.dll");
 
-	clientMode = **reinterpret_cast<void***>((*reinterpret_cast<unsigned int**>(client))[10] + 5);
+	weapons = *reinterpret_cast<IWeaponSystem**>(memory::FindPattern("client", "8B 35 ? ? ? ? FF 10 0F B7 C0") + 2);
+	clientMode = **reinterpret_cast<IClientMode***>(memory::FindPattern("client.dll", "55 8B EC 8B 0D ?? ?? ?? ?? 8B 01 5D FF 60") + 5);
 }
 
 template <typename T>

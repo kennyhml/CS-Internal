@@ -5,13 +5,13 @@
 namespace memory
 {
 	template <typename Return, typename ... Args>
-	Return Call(void* _this, const uintptr_t index, Args ... args) noexcept
+	Return CallVmtFn(void* _this, const uintptr_t index, Args ... args) noexcept
 	{
 		using Function = Return(__thiscall*)(void*, decltype(args)...);
 		return (*static_cast<Function**>(_this))[index](_this, args...);
 	}
 
-	inline void* Get(void* _this, const uintptr_t index) noexcept
+	inline void* GetVmtFn(void* _this, const uintptr_t index) noexcept
 	{
 		return (*static_cast<void***>(_this))[index];
 	}
@@ -26,3 +26,8 @@ namespace memory
 	}
 
 }
+
+#define STR_MERGE_IMPL(a, b) a##b
+#define STR_MERGE(a, b) STR_MERGE_IMPL(a, b)
+#define MAKE_PAD(size) STR_MERGE(_pad, __COUNTER__)[size]
+#define DEFINE_MEMBER_N(type, name, offset) struct {unsigned char MAKE_PAD(offset); type name;}

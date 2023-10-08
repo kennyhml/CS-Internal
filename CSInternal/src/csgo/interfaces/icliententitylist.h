@@ -1,11 +1,11 @@
 #pragma once
-#include "entity/centity.h"
+#include "../entity/centity.h"
 
 struct IClientEntityList
 {
 	CEntity* GetClientEntityFromIndex(int index)
 	{
-		return memory::Call<CEntity*>(this, 3, index);
+		return memory::CallVmtFn<CEntity*>(this, 3, index);
 	}
 
 	template <typename Type>
@@ -16,7 +16,7 @@ struct IClientEntityList
 
 	CEntity* GetClientEntityFromHandle(int handle)
 	{
-		return memory::Call<CEntity*>(this, 4, handle);
+		return memory::CallVmtFn<CEntity*>(this, 4, handle);
 	}
 
 	template <typename Type>
@@ -27,12 +27,12 @@ struct IClientEntityList
 
 	int NumberOfEntities(bool includeNonNetworkable)
 	{
-		return memory::Call<int>(this, 5, includeNonNetworkable);
+		return memory::CallVmtFn<int>(this, 5, includeNonNetworkable);
 	}
 
 	int GetHighestEntityIndex()
 	{
-		return memory::Call<int>(this, 6);
+		return memory::CallVmtFn<int>(this, 6);
 	}
 
 };

@@ -1,6 +1,5 @@
 #pragma once
-
-struct CCSPlayer;
+#include "../csgo/entity/ccsplayer.h"
 
 namespace globals
 {

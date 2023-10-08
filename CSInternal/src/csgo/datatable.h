@@ -59,9 +59,8 @@ struct RecvProp
 	const char* parentArrayPropName;
 };
 
-class ClientClass
+struct ClientClass
 {
-public:
 	void* CreateClientClassFn;
 	void* CreateEventFn;
 	char* networkName;

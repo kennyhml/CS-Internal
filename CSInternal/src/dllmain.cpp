@@ -5,6 +5,8 @@
 #include "geometry.h"
 #include "csgo/sdk.h"
 #include "core/hooks.h"
+#include "csgo/entity/cbaseattributableitem.h"
+#include "csgo/entity/cweapondata.h"
 
 FILE* fConsole = nullptr;
 
@@ -19,10 +21,24 @@ void MainThread(HMODULE instance)
 	hooks::Init();
 
 	globals::localPlayer = interfaces::entityList->FromIndex<CCSPlayer*>(interfaces::engine->GetLocalPlayerIndex());
-
 	auto lp = globals::localPlayer;
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
+
+		if (lp)
+		{
+			CBaseAttributableItem* weapon = lp->GetActiveWeapon();
+			if (weapon)
+			{
+				auto index = weapon->ItemDefinitionIndex();
+				const CWeaponData* data = interfaces::weapons->GetWeaponData(index);
+				if (data)
+				{
+					std::cout << data->maxClip1 << "\n";
+				}
+			}
+		}
+		continue;
 
 		for (int i = 1; i <= 64; ++i) {
 

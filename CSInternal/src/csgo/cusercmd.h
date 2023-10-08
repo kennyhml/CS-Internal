@@ -32,10 +32,9 @@ enum ECommandButton : std::int32_t
 	IN_MIDDLE_ATTACK = (1 << 25)
 };
 
-class CUserCmd
+struct CUserCmd
 {
-public:
-	void* vmt;
+	void* vTable;
 	std::int32_t commandNumber;
 	std::int32_t tickCount;
 	Vector3 viewAngles;
