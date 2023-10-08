@@ -9,6 +9,8 @@ void interfaces::Init()
 	entityList = GetInterface<IClientEntityList>("VClientEntityList003", "client.dll");
 	engine = GetInterface<IEngineClient>("VEngineClient014", "engine.dll");
 	trace = GetInterface<IEngineTraceClient>("EngineTraceClient004", "engine.dll");
+	render = GetInterface<IStudioRender>("VStudioRender026", "studiorender.dll");
+	materialSystem = GetInterface<IMaterialSystem>("VMaterialSystem080", "materialsystem.dll");
 
 	weapons = *reinterpret_cast<IWeaponSystem**>(memory::FindPattern("client", "8B 35 ? ? ? ? FF 10 0F B7 C0") + 2);
 	clientMode = **reinterpret_cast<IClientMode***>(memory::FindPattern("client.dll", "55 8B EC 8B 0D ?? ?? ?? ?? 8B 01 5D FF 60") + 5);
