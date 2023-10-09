@@ -10,29 +10,10 @@ struct CEntity;
 
 struct IGlowObjectManager
 {
-	IGlowObjectManager() { };
-
-	virtual int RegisterGlowObject(CBaseEntity* pEntity, const Vector3& vGlowColor, float flGlowAlpha, bool bRenderWhenOccluded, bool bRenderWhenUnoccluded, int nSplitScreenSlot) = 0;
-	virtual void UnregisterGlowObject(int nGlowObjectHandle) = 0;
-	virtual void SetEntity(int nGlowObjectHandle, CBaseEntity* pEntity) = 0;
-	virtual void SetColor(int nGlowObjectHandle, const Vector3& vGlowColor) = 0;
-
-	virtual void SetAlpha(int nGlowObjectHandle, float flAlpha) = 0;
-	virtual void SetRenderFlags(int nGlowObjectHandle, bool bRenderWhenOccluded, bool bRenderWhenUnoccluded) = 0;
-
-	virtual bool IsRenderingWhenOccluded(int nGlowObjectHandle) const = 0;
-	virtual bool IsRenderingWhenUnoccluded(int nGlowObjectHandle) const = 0;
-	virtual bool HasGlowEffect(CBaseEntity* pEntity) const = 0;
-
-	virtual void RenderGlowEffects(const CViewSetup* pSetup, int nSplitScreenSlot) = 0;
-
-	virtual void RenderGlowModels(const CViewSetup* pSetup, int nSplitScreenSlot, CMatRenderContextPtr& pRenderContext);
-	virtual void ApplyEntityGlowEffects(const CViewSetup* pSetup, int nSplitScreenSlot, CMatRenderContextPtr& pRenderContext, float flBloomScale, int x, int y, int w, int h);
-
 	struct CGlowObject
 	{
 		int nextFreeSlot;
-		CEntity* entity;
+		CBaseEntity* entity;
 
 		struct
 		{

@@ -1,4 +1,5 @@
 #pragma once
+#include "cclientclass.h"
 
 enum ShouldTransmitState : int
 {
@@ -15,13 +16,12 @@ enum DataUpdateType : int
 
 struct bf_read;
 struct CUnknown;
-struct CClass;
 
 struct CNetworkable
 {
 	virtual CUnknown* GetClientUnknown() = 0;
 	virtual void Release() = 0;
-	virtual CClass* GetClientClass() = 0;
+	virtual CClientClass* GetClientClass() = 0;
 	virtual void NotifyShouldTransmit(ShouldTransmitState state) = 0;
 	virtual void OnPreDataChanged(DataUpdateType updateType) = 0;
 	virtual void OnDataChanged(DataUpdateType updateType) = 0;

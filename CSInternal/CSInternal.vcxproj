@@ -186,6 +186,7 @@
     <ClInclude Include="ext\minhook\trampoline.h" />
     <ClInclude Include="src\core\globals.h" />
     <ClInclude Include="src\core\hooks.h" />
+    <ClInclude Include="src\csgo\entity\cclientclass.h" />
     <ClInclude Include="src\csgo\entity\cweapondata.h" />
     <ClInclude Include="src\csgo\interfaces\iclientmode.h" />
     <ClInclude Include="src\csgo\entity\cbaseweaponworldmodel.h" />

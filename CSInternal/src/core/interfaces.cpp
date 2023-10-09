@@ -11,8 +11,7 @@ void interfaces::Init()
 	trace = GetInterface<IEngineTraceClient>("EngineTraceClient004", "engine.dll");
 	render = GetInterface<IStudioRender>("VStudioRender026", "studiorender.dll");
 	materialSystem = GetInterface<IMaterialSystem>("VMaterialSystem080", "materialsystem.dll");
-
-	glow = *reinterpret_cast<IGlowObjectManager**>(memory::FindPattern("client.dll", "0F 11 05 ? ? ? ? 83 C8 01"));
+	glow = *reinterpret_cast<IGlowObjectManager**>(memory::FindPattern("client.dll", "0F 11 05 ? ? ? ? 83 C8 01") + 3);
 	weapons = *reinterpret_cast<IWeaponSystem**>(memory::FindPattern("client.dll", "8B 35 ? ? ? ? FF 10 0F B7 C0") + 2);
 	clientMode = **reinterpret_cast<IClientMode***>(memory::FindPattern("client.dll", "55 8B EC 8B 0D ?? ?? ?? ?? 8B 01 5D FF 60") + 5);
 }

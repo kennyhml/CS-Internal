@@ -20,6 +20,12 @@ void hooks::Init()
 		reinterpret_cast<void**>(&oDrawModel)
 	);
 
+	MH_CreateHook(
+		memory::GetVmtFn(interfaces::clientMode, 44),
+		&DoPostScreenSpaceEffects,
+		reinterpret_cast<void**>(&oDoPostScreenSpaceEffects)
+	);
+
 	MH_EnableHook(MH_ALL_HOOKS);
 }
 
@@ -76,7 +82,9 @@ void __stdcall hooks::DrawModel(
 	{
 		CBaseEntity* entity = info.renderable->GetClientUnknown()->GetBaseEntity();
 
-		if (entity && entity->IsPlayer() && entity->GetTeam() != globals::localPlayer->GetTeam())
+		if (entity && entity->IsPlayer() 
+			&& entity->GetTeam() != globals::localPlayer->GetTeam()
+			&& !interfaces::render->IsForcedMaterialOverride())
 		{
 			static IMaterial* material = interfaces::materialSystem->FindMaterial("debug/debugambientcube");
 
@@ -101,10 +109,34 @@ void __stdcall hooks::DrawModel(
 	oDrawModel(interfaces::render, result, info, bones, flexWeights, flexDelayedWeights, modelOrigin, flags);
 }
 
-
 bool __stdcall hooks::DoPostScreenSpaceEffects(const CViewSetup* pSetup)
 {
-	std::cout << "Im hooked meow!\n";
-	return oDoPostScreenSpaceEffects(pSetup);
 
+	if (globals::localPlayer && interfaces::engine->IsInGame())
+	{
+		for (int i = 0; i < interfaces::glow->glowObjects.size; i++)
+		{
+			IGlowObjectManager::CGlowObject& object = interfaces::glow->glowObjects[i];
+
+			if (!object.entity || object.IsUnused()) { continue; }
+
+			switch (object.entity->GetClientClass()->classID)
+			{
+			case CClientClass::CCSPlayer:
+				if (!object.entity->IsAlive()) { break; }
+
+				if (object.entity->GetTeam() == globals::localPlayer->GetTeam()) {
+					object.SetColor(0.f, 0.f, 1.f);
+				}
+				else {
+					object.SetColor(1.f, 0.f, 0.f);
+				}
+				break;
+
+			default:
+				break;
+			}
+		}
+	}
+	return oDoPostScreenSpaceEffects(interfaces::clientMode, pSetup);
 }

@@ -22,7 +22,7 @@ namespace hooks
 		Vector3& modelOrigin,
 		int flags);
 
-	using DoPostScreenSpaceEffectsFn = bool(__thiscall*)(const CViewSetup* pSetup);
+	using DoPostScreenSpaceEffectsFn = bool(__thiscall*)(void* _this, const CViewSetup* pSetup);
 	inline DoPostScreenSpaceEffectsFn oDoPostScreenSpaceEffects = nullptr;
 	bool __stdcall DoPostScreenSpaceEffects(const CViewSetup* pSetup);
 }
