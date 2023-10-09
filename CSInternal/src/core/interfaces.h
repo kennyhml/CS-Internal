@@ -8,6 +8,8 @@
 #include "../csgo/interfaces/iclientmode.h"
 #include "../csgo/interfaces/istudiorender.h"
 #include "../csgo/interfaces/imaterialsystem.h"
+#include "../csgo/interfaces/iglowmanager.h"
+
 
 namespace interfaces
 {
@@ -22,7 +24,7 @@ namespace interfaces
 	inline IWeaponSystem* weapons = nullptr;
 	inline IStudioRender* render = nullptr;
 	inline IMaterialSystem* materialSystem = nullptr;
-
+	inline IGlowObjectManager* glow = nullptr;
 	inline IClient* client = nullptr;
 	inline IClientMode* clientMode = nullptr;
 }

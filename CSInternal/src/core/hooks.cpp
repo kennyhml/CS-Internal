@@ -100,3 +100,11 @@ void __stdcall hooks::DrawModel(
 	}
 	oDrawModel(interfaces::render, result, info, bones, flexWeights, flexDelayedWeights, modelOrigin, flags);
 }
+
+
+bool __stdcall hooks::DoPostScreenSpaceEffects(const CViewSetup* pSetup)
+{
+	std::cout << "Im hooked meow!\n";
+	return oDoPostScreenSpaceEffects(pSetup);
+
+}

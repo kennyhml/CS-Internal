@@ -12,9 +12,7 @@ namespace hooks
 	bool __stdcall CreateMove(float frameTime, CUserCmd* cmd);
 
 	using DrawModelFn = void(__thiscall*)(void*, void*, CDrawModelInfo&, CMatrix3x4*, float*, float*, Vector3&, int);
-
 	inline DrawModelFn oDrawModel = nullptr;
-
 	void __stdcall DrawModel(
 		void* result,
 		CDrawModelInfo& info,
@@ -24,5 +22,8 @@ namespace hooks
 		Vector3& modelOrigin,
 		int flags);
 
+	using DoPostScreenSpaceEffectsFn = bool(__thiscall*)(const CViewSetup* pSetup);
+	inline DoPostScreenSpaceEffectsFn oDoPostScreenSpaceEffects = nullptr;
+	bool __stdcall DoPostScreenSpaceEffects(const CViewSetup* pSetup);
 }
 
