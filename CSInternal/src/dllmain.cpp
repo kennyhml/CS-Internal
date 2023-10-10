@@ -24,7 +24,7 @@ void MainThread(HMODULE instance)
 	auto lp = globals::localPlayer;
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
-
+		Sleep(5);
 	}
 
 	hooks::Destroy();

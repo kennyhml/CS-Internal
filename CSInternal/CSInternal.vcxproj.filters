@@ -57,6 +57,12 @@
     <ClCompile Include="src\core\hooks\drawmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\hacks\bunnyhop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\hacks\triggerbot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\interfaces.h">
@@ -222,6 +228,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\csgo\entity\cclientclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\hacks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,38 +4,12 @@
 bool __stdcall hooks::CreateMove(float frameTime, CUserCmd* cmd)
 {
 	const bool result = oCreateMove(interfaces::clientMode, frameTime, cmd);
-
 	if (!cmd->commandNumber) { return result; }
+
+	hacks::BunnyHop(cmd);
+	hacks::TriggerBot(cmd);
 
 	if (result) { interfaces::engine->SetViewAngles(cmd->viewAngles); }
 
-	globals::localPlayer = interfaces::entityList->FromIndex<CCSPlayer*>(interfaces::engine->GetLocalPlayerIndex());
-	if (!globals::localPlayer || !globals::localPlayer->IsAlive()) { return false; }
-
-	if (!(globals::localPlayer->Flags() & FL_ONGROUND) && GetAsyncKeyState(VK_SPACE))
-	{
-		cmd->buttons &= ~IN_JUMP;
-	}
-
-	if (GetAsyncKeyState(VK_RBUTTON) >= 0) { return false; }
-
-	std::cout << "Down\n";
-
-	Vector3 eyePos = globals::localPlayer->GetEyePosition();
-	Vector3 aimPunch = globals::localPlayer->GetAimPunch();
-
-	Vector3 dst = eyePos + Vector3{ cmd->viewAngles + aimPunch }.ToVector3() * 5000.f;
-
-	CTrace trace;
-	interfaces::trace->TraceRay({ eyePos, dst }, 0x46004009, globals::localPlayer, trace);
-
-	if (!trace.entity
-		|| !trace.entity->IsPlayer()
-		|| !trace.entity->IsAlive()
-		|| trace.entity->GetTeam() == globals::localPlayer->GetTeam()) {
-		return false;
-	}
-
-	cmd->buttons |= IN_ATTACK;
 	return false;
 }
