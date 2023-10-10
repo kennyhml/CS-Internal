@@ -32,10 +32,6 @@ void MainThread(HMODULE instance)
 			{
 				auto index = weapon->ItemDefinitionIndex();
 				const CWeaponData* data = interfaces::weapons->GetWeaponData(index);
-				if (data)
-				{
-					std::cout << data->maxClip1 << "\n";
-				}
 			}
 		}
 		continue;
