@@ -9,7 +9,7 @@
 #include "../csgo/interfaces/istudiorender.h"
 #include "../csgo/interfaces/imaterialsystem.h"
 #include "../csgo/interfaces/iglowmanager.h"
-
+#include "../csgo/interfaces/iglobalvarsbase.h"
 
 namespace interfaces
 {
@@ -27,4 +27,5 @@ namespace interfaces
 	inline IGlowObjectManager* glow = nullptr;
 	inline IClient* client = nullptr;
 	inline IClientMode* clientMode = nullptr;
+	inline IGlobalVarsBase* globals = nullptr;
 }
