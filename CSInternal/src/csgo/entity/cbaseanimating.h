@@ -4,6 +4,12 @@
 struct CBaseAnimating : public CBaseEntity
 {
 
+
+
+
+
+
+
 };
 
 struct CBaseAnimatingOverlay : public CBaseAnimating

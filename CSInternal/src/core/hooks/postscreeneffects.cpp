@@ -17,12 +17,15 @@ static void SetGlowColor(IGlowObjectManager::CGlowObject& object)
 		object.SetColor(IsEnemy(entity) ? Color{ 1.f, 0.f, 0.f } : Color{ 0.f, 0.f, 1.f });
 		break;
 
+		// C4
+	case CClientClass::CC4:
 	case CClientClass::CPlantedC4:
 		object.SetColor(1.f, 1.f, 1.f);
 		break;
 
+		// Grenades
 	case CClientClass::CDecoyProjectile:
-		break; // dont draw decoys at all, makes it easier than checking for a decoy color imo
+		break; // dont draw decoys at all
 
 	case CClientClass::CSmokeGrenadeProjectile:
 	case CClientClass::CMolotovProjectile:

@@ -47,8 +47,8 @@ struct CRenderable
 	virtual int GetBody() = 0;
 	virtual void GetColorModulation(float* color) = 0;
 	virtual bool LODTest() = 0;
-	virtual bool SetupBones(Matrix3x4* boneToWorldOut, int maxBones, int boneMask, float currentTime) = 0;
-	virtual void SetupWeights(const Matrix3x4* boneToWorld, int flexWeightCount, float* flexWeights, float* flexDelayedWeights) = 0;
+	virtual bool SetupBones(CMatrix3x4* boneToWorldOut, int maxBones, int boneMask, float currentTime) = 0;
+	virtual void SetupWeights(const CMatrix3x4* boneToWorld, int flexWeightCount, float* flexWeights, float* flexDelayedWeights) = 0;
 	virtual void DoAnimationEvents(void) = 0;
 	virtual void* GetPVSNotifyInterface() = 0;
 	virtual void GetRenderBounds(Vector3& mins, Vector3& maxs) = 0;
@@ -68,11 +68,11 @@ struct CRenderable
 	virtual void Unused2() {}
 	virtual void CreateModelInstance() = 0;
 	virtual unsigned short GetModelInstance() = 0;
-	virtual const Matrix3x4& RenderableToWorldTransform() = 0;
+	virtual const CMatrix3x4& RenderableToWorldTransform() = 0;
 	virtual int LookupAttachment(const char* attachmentName) = 0;
 	virtual	bool GetAttachment(int number, Vector3& origin, Vector3& angles) = 0;
-	virtual bool GetAttachment(int number, Matrix3x4& matrix) = 0;
-	virtual bool ComputeLightingOrigin(int attachmentIndex, Vector3 modelLightingCenter, const Matrix3x4& matrix, Vector3& transformedLightingCenter) = 0;
+	virtual bool GetAttachment(int number, CMatrix3x4& matrix) = 0;
+	virtual bool ComputeLightingOrigin(int attachmentIndex, Vector3 modelLightingCenter, const CMatrix3x4& matrix, Vector3& transformedLightingCenter) = 0;
 	virtual float* GetRenderClipPlane(void) = 0;
 	virtual int	 GetSkin() = 0;
 	virtual void OnThreadedDrawSetup() = 0;

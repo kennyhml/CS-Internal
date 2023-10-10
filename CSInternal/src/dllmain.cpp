@@ -25,27 +25,6 @@ void MainThread(HMODULE instance)
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
 
-		if (lp)
-		{
-			CBaseAttributableItem* weapon = lp->GetActiveWeapon();
-			if (weapon)
-			{
-				auto index = weapon->ItemDefinitionIndex();
-				const CWeaponData* data = interfaces::weapons->GetWeaponData(index);
-			}
-		}
-		continue;
-
-		for (int i = 1; i <= 64; ++i) {
-
-			const auto entity = interfaces::entityList->FromIndex<CCSPlayer*>(i);
-			if (!entity || !entity->IsPlayer()) { continue; }
-
-			CPlayerInfo info;
-			interfaces::engine->GetPlayerInfo(entity->GetIndex(), &info);
-
-			std::cout << info.name << ": " << entity->Health() << " HP, " << entity->ArmorValue() << " Armor\n";
-		}
 	}
 
 	hooks::Destroy();

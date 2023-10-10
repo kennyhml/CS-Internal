@@ -10,10 +10,16 @@ bool __stdcall hooks::CreateMove(float frameTime, CUserCmd* cmd)
 	if (result) { interfaces::engine->SetViewAngles(cmd->viewAngles); }
 
 	globals::localPlayer = interfaces::entityList->FromIndex<CCSPlayer*>(interfaces::engine->GetLocalPlayerIndex());
-
-	if (!GetAsyncKeyState(VK_CONTROL) & 1) { return false; }
-
 	if (!globals::localPlayer || !globals::localPlayer->IsAlive()) { return false; }
+
+	if (!(globals::localPlayer->Flags() & FL_ONGROUND) && GetAsyncKeyState(VK_SPACE))
+	{
+		cmd->buttons &= ~IN_JUMP;
+	}
+
+	if (GetAsyncKeyState(VK_RBUTTON) >= 0) { return false; }
+
+	std::cout << "Down\n";
 
 	Vector3 eyePos = globals::localPlayer->GetEyePosition();
 	Vector3 aimPunch = globals::localPlayer->GetAimPunch();

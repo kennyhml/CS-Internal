@@ -83,6 +83,10 @@ struct CBaseEntity : public CEntity
 		return memory::CallVmtFn<CCSPlayer*>(this, 294);
 	}
 
-	Matrix3x4* GetBoneMatrix();
+	bool SetupBones(CMatrix3x4* boneToWorldOut, int max, int mask, float time)
+	{
+		return memory::CallVmtFn<bool>(this + 0x4, 13, boneToWorldOut, max, mask, time);
+	}
+
 	Vector3 GetBonePosition(int bone);
 };
