@@ -8,6 +8,11 @@ struct CMatRenderContextPtr;
 struct CEntity;
 
 
+struct Color
+{
+	float r, g, b, a = 1.f;
+};
+
 struct IGlowObjectManager
 {
 	struct CGlowObject
@@ -15,13 +20,7 @@ struct IGlowObjectManager
 		int nextFreeSlot;
 		CBaseEntity* entity;
 
-		struct
-		{
-			float r;
-			float g;
-			float b;
-			float a;
-		} color;
+		Color color;
 
 		bool glowAlphaCappedByRenderAlpha;
 		float glowAlphaFunctionOfMaxVelocity;
@@ -44,6 +43,13 @@ struct IGlowObjectManager
 		void SetColor(float r, float g, float b, float a = 1.f)
 		{
 			color = { r, g, b, a };
+			renderWhenOccluded = true;
+			renderWhenUnoccluded = false;
+		}
+
+		void SetColor(Color newColor)
+		{
+			color = newColor;
 			renderWhenOccluded = true;
 			renderWhenUnoccluded = false;
 		}

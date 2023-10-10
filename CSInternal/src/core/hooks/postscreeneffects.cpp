@@ -1,5 +1,41 @@
 #include "../hooks.h"
 
+static bool IsEnemy(CBaseEntity* entity)
+{
+	return entity->GetTeam() != globals::localPlayer->GetTeam();
+}
+
+static void SetGlowColor(IGlowObjectManager::CGlowObject& object)
+{
+	auto entity = object.entity;
+	auto id = static_cast<CClientClass::EClassID>(entity->GetClientClass()->classID);
+
+	switch (id)
+	{
+	case CClientClass::CCSPlayer:
+		if (!entity->IsAlive()) { return; }
+		object.SetColor(IsEnemy(entity) ? Color{ 1.f, 0.f, 0.f } : Color{ 0.f, 0.f, 1.f });
+		break;
+
+	case CClientClass::CPlantedC4:
+		object.SetColor(1.f, 1.f, 1.f);
+		break;
+
+	case CClientClass::CDecoyProjectile:
+		break; // dont draw decoys at all, makes it easier than checking for a decoy color imo
+
+	case CClientClass::CSmokeGrenadeProjectile:
+	case CClientClass::CMolotovProjectile:
+	case CClientClass::CFlashbang:
+	case CClientClass::CBaseCSGrenadeProjectile:
+		object.SetColor(1.f, 1.f, 0.f);
+		break;
+
+	default:
+		break;
+	}
+}
+
 bool __stdcall hooks::DoPostScreenSpaceEffects(const CViewSetup* pSetup)
 {
 	if (globals::localPlayer && interfaces::engine->IsInGame())
@@ -9,23 +45,9 @@ bool __stdcall hooks::DoPostScreenSpaceEffects(const CViewSetup* pSetup)
 			IGlowObjectManager::CGlowObject& object = interfaces::glow->glowObjects[i];
 
 			if (!object.entity || object.IsUnused()) { continue; }
+			SetGlowColor(object);
 
-			switch (object.entity->GetClientClass()->classID)
-			{
-			case CClientClass::CCSPlayer:
-				if (!object.entity->IsAlive()) { break; }
 
-				if (object.entity->GetTeam() == globals::localPlayer->GetTeam()) {
-					object.SetColor(0.f, 0.f, 1.f);
-				}
-				else {
-					object.SetColor(1.f, 0.f, 0.f);
-				}
-				break;
-
-			default:
-				break;
-			}
 		}
 	}
 	return oDoPostScreenSpaceEffects(interfaces::clientMode, pSetup);
