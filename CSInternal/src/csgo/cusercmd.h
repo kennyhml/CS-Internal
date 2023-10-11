@@ -35,18 +35,18 @@ enum ECommandButton : std::int32_t
 struct CUserCmd
 {
 	void* vTable;
-	std::int32_t commandNumber;
-	std::int32_t tickCount;
+	int32_t commandNumber;
+	int32_t tickCount;
 	Vector3 viewAngles;
 	Vector3 aimDirection;
 	float forwardMove;
 	float sideMove;
 	float upMove;
-	std::int32_t buttons;
+	int32_t buttons;
 	char impulse;
-	std::int32_t weaponSelect;
-	std::int32_t weaponSubType;
-	std::int32_t randomSeed;
+	int32_t weaponSelect;
+	int32_t weaponSubType;
+	int32_t randomSeed;
 	short mouseDeltaX;
 	short mouseDeltaY;
 	bool hasBeenPredicted;

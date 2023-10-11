@@ -169,6 +169,7 @@
     <ClCompile Include="ext\minhook\hook.c" />
     <ClCompile Include="ext\minhook\trampoline.c" />
     <ClCompile Include="src\core\hacks\bunnyhop.cpp" />
+    <ClCompile Include="src\core\hacks\aimbot.cpp" />
     <ClCompile Include="src\core\hacks\triggerbot.cpp" />
     <ClCompile Include="src\core\hooks.cpp" />
     <ClCompile Include="src\core\hooks\createmove.cpp" />
@@ -240,7 +241,7 @@
     <ClInclude Include="src\tools\memory.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\data.txt" />
+    <Text Include="src\netvar_dump.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

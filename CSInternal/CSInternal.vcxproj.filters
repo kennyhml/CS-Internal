@@ -63,6 +63,9 @@
     <ClCompile Include="src\core\hacks\triggerbot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\hacks\aimbot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\interfaces.h">
@@ -238,6 +241,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\data.txt" />
+    <Text Include="src\netvar_dump.txt" />
   </ItemGroup>
 </Project>

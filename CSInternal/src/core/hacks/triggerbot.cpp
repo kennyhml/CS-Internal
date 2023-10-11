@@ -14,7 +14,7 @@ void hacks::TriggerBot(CUserCmd* cmd)
 {
 	if (!globals::localPlayer
 		|| !globals::localPlayer->IsAlive()
-		|| !GetAsyncKeyState(VK_SHIFT) & 0x8000) {
+		|| !(GetAsyncKeyState(VK_SHIFT) & 0x8000)) {
 		return;
 	}
 

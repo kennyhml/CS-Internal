@@ -49,8 +49,6 @@ bool __stdcall hooks::DoPostScreenSpaceEffects(const CViewSetup* pSetup)
 
 			if (!object.entity || object.IsUnused()) { continue; }
 			SetGlowColor(object);
-
-
 		}
 	}
 	return oDoPostScreenSpaceEffects(interfaces::clientMode, pSetup);

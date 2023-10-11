@@ -25,33 +25,8 @@ void MainThread(HMODULE instance)
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
 
-		int myTeam = globals::localPlayer->GetTeam();
-		float bestFov = 5.f;
-		Vector3 bestAngle{  };
-
-		for (int i = 0; i <= 64; i++)
-		{
-			auto ent = interfaces::entityList->FromIndex<CCSPlayer*>(i);
-			if (!ent || !ent->IsAlive() || ent->IsDormant()
-				|| ent->GetTeam() == myTeam || ent->HasGunGameImmunity()) {
-				continue;
-			}
-
-			CMatrix3x4 bones[128];
-			if (!ent->SetupBones(bones, 128, 256, interfaces::globals->currentTime))
-			{
-
-			}
-
-
-
-
-		}
-
-
-
-
-
+		Sleep(5);
+		continue;
 
 	}
 
