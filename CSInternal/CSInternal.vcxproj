@@ -170,10 +170,12 @@
     <ClCompile Include="ext\minhook\trampoline.c" />
     <ClCompile Include="src\core\hacks\bunnyhop.cpp" />
     <ClCompile Include="src\core\hacks\aimbot.cpp" />
+    <ClCompile Include="src\core\hacks\esp.cpp" />
     <ClCompile Include="src\core\hacks\triggerbot.cpp" />
     <ClCompile Include="src\core\hooks.cpp" />
     <ClCompile Include="src\core\hooks\createmove.cpp" />
     <ClCompile Include="src\core\hooks\drawmodel.cpp" />
+    <ClCompile Include="src\core\hooks\painttraverse.cpp" />
     <ClCompile Include="src\core\hooks\postscreeneffects.cpp" />
     <ClCompile Include="src\core\interfaces.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
@@ -210,10 +212,14 @@
     <ClInclude Include="src\csgo\cusercmd.h" />
     <ClInclude Include="src\csgo\entity\collideable.h" />
     <ClInclude Include="src\csgo\entity\csplayerresource.h" />
+    <ClInclude Include="src\csgo\interfaces\idebugoverlay.h" />
+    <ClInclude Include="src\csgo\interfaces\ienginevgui.h" />
     <ClInclude Include="src\csgo\interfaces\iglobalvarsbase.h" />
     <ClInclude Include="src\csgo\interfaces\iglowmanager.h" />
     <ClInclude Include="src\csgo\interfaces\imaterialsystem.h" />
     <ClInclude Include="src\csgo\interfaces\istudiorender.h" />
+    <ClInclude Include="src\csgo\interfaces\ipanel.h" />
+    <ClInclude Include="src\csgo\interfaces\isurface.h" />
     <ClInclude Include="src\csgo\interfaces\iweaponsystem.h" />
     <ClInclude Include="src\csgo\panel.h" />
     <ClInclude Include="src\csgo\sdk.h" />

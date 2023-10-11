@@ -27,5 +27,9 @@ namespace hooks
 	using DoPostScreenSpaceEffectsFn = bool(__thiscall*)(void* _this, const CViewSetup* pSetup);
 	inline DoPostScreenSpaceEffectsFn oDoPostScreenSpaceEffects = nullptr;
 	bool __stdcall DoPostScreenSpaceEffects(const CViewSetup* pSetup);
+
+	using PaintTraverseFn = void(__thiscall*)(IPanel*, uintptr_t, bool, bool);
+	inline PaintTraverseFn oPaintTraverse = nullptr;
+	void __stdcall PaintTraverse(uintptr_t panel, bool repaint, bool allowForce);
 }
 

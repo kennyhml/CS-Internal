@@ -2,7 +2,6 @@
 #include <Windows.h>
 #include "core/interfaces.h"
 #include <iostream>
-#include "geometry.h"
 #include "csgo/sdk.h"
 #include "core/hooks.h"
 #include "csgo/entity/cbaseattributableitem.h"
@@ -24,10 +23,8 @@ void MainThread(HMODULE instance)
 	auto lp = globals::localPlayer;
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
-
 		Sleep(5);
 		continue;
-
 	}
 
 	hooks::Destroy();

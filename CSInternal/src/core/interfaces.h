@@ -10,6 +10,10 @@
 #include "../csgo/interfaces/imaterialsystem.h"
 #include "../csgo/interfaces/iglowmanager.h"
 #include "../csgo/interfaces/iglobalvarsbase.h"
+#include "../csgo/interfaces/ipanel.h"
+#include "../csgo/interfaces/ienginevgui.h"
+#include "../csgo/interfaces/idebugoverlay.h"
+#include "../csgo/interfaces/isurface.h"
 
 namespace interfaces
 {
@@ -28,4 +32,8 @@ namespace interfaces
 	inline IClient* client = nullptr;
 	inline IClientMode* clientMode = nullptr;
 	inline IGlobalVarsBase* globals = nullptr;
+	inline IPanel* panel = nullptr;
+	inline IEngineVGui* engineVGui = nullptr;
+	inline IDebugOverlay* debugOverlay = nullptr;
+	inline ISurface* surface = nullptr;
 }

@@ -36,7 +36,8 @@ static Vector3 GetAngleToEnemy(CUserCmd* cmd, CMatrix3x4* bones, Vector3& aimPun
 		trace
 	);
 
-	if (trace.entity && !trace.fraction < 0.97f) {
+	bool goodFraction = trace.fraction >= 0.97f;
+	if (trace.entity && goodFraction) {
 		result = Vector3{ (bones[8].Origin() - eyePos).ToAngle() - (cmd->viewAngles + aimPunch) };
 	}
 	return result;

@@ -18,7 +18,6 @@ namespace memory
 
 	BYTE* FindPattern(const char* moduleName, const char* pattern);
 
-
 	inline namespace offsets
 	{
 		inline BYTE* setAbsOrigin = nullptr;

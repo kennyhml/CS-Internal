@@ -11,11 +11,15 @@ void interfaces::Init()
 	trace = GetInterface<IEngineTraceClient>("EngineTraceClient004", "engine.dll");
 	render = GetInterface<IStudioRender>("VStudioRender026", "studiorender.dll");
 	materialSystem = GetInterface<IMaterialSystem>("VMaterialSystem080", "materialsystem.dll");
+	panel = GetInterface<IPanel>("VGUI_Panel009", "vgui2.dll");
+	engineVGui = GetInterface<IEngineVGui>("VEngineVGui001", "engine.dll");
+	debugOverlay = GetInterface<IDebugOverlay>("VDebugOverlay004", "engine.dll");
+	surface = GetInterface<ISurface>("VGUI_Surface031", "vguimatsurface.dll");
+
 	glow = *reinterpret_cast<IGlowObjectManager**>(memory::FindPattern("client.dll", "0F 11 05 ? ? ? ? 83 C8 01") + 3);
 	weapons = *reinterpret_cast<IWeaponSystem**>(memory::FindPattern("client.dll", "8B 35 ? ? ? ? FF 10 0F B7 C0") + 2);
 	clientMode = **reinterpret_cast<IClientMode***>(memory::FindPattern("client.dll", "55 8B EC 8B 0D ?? ?? ?? ?? 8B 01 5D FF 60") + 5);
 	globals = **reinterpret_cast<IGlobalVarsBase***>(memory::FindPattern("client.dll", "74 1A A1 ?? ?? ?? ?? F3 0F 10 40 10") + 3);
-	IGlobalVarsBase* globalsTest = **reinterpret_cast<IGlobalVarsBase***>((*reinterpret_cast<uintptr_t**>(client))[11] + 10);
 }
 
 template <typename T>

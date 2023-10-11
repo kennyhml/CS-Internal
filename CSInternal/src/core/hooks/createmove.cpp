@@ -10,7 +10,7 @@ bool __stdcall hooks::CreateMove(float frameTime, CUserCmd* cmd)
 	hacks::TriggerBot(cmd);
 
 	if (result) { interfaces::engine->SetViewAngles(cmd->viewAngles); }
-
 	hacks::Aimbot(cmd);
+
 	return false;
 }

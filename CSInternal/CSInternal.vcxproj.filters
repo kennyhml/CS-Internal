@@ -66,6 +66,12 @@
     <ClCompile Include="src\core\hacks\aimbot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\hooks\painttraverse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\hacks\esp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\interfaces.h">
@@ -231,6 +237,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\csgo\interfaces\iglobalvarsbase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\interfaces\ipanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\interfaces\ienginevgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\interfaces\idebugoverlay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\csgo\interfaces\isurface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

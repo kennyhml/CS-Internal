@@ -6,6 +6,16 @@ struct CPlayerInfo;
 
 struct IEngineClient
 {
+	const CMatrix4x4& WorldToScreenMatrix() noexcept
+	{
+		return memory::CallVmtFn<const CMatrix4x4&>(this, 37);
+	}
+
+	void GetScreenSize(int32_t& width, int32_t& height) noexcept
+	{
+		memory::CallVmtFn<void, int32_t&, int32_t&>(this, 5, width, height);
+	}
+
 	bool IsInGame()
 	{
 		return memory::CallVmtFn<bool>(this, 27);

@@ -26,6 +26,12 @@ void hooks::Init()
 		reinterpret_cast<void**>(&oDoPostScreenSpaceEffects)
 	);
 
+	MH_CreateHook(
+		memory::GetVmtFn(interfaces::panel, 41),
+		&PaintTraverse,
+		reinterpret_cast<void**>(&oPaintTraverse)
+	);
+
 	MH_EnableHook(MH_ALL_HOOKS);
 }
 
@@ -35,3 +41,4 @@ void hooks::Destroy()
 	MH_RemoveHook(MH_ALL_HOOKS);
 	MH_Uninitialize();
 }
+

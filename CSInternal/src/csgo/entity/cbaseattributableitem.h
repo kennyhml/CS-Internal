@@ -12,4 +12,6 @@ struct CBaseAttributableItem : public CBaseCombatWeapon
 	NETVAR(FallbackSeed, "CBaseAttributableItem->m_nFallbackSeed", unsigned);
 	NETVAR(FallbackWear, "CBaseAttributableItem->m_flFallbackWear", float);
 	NETVAR(FallbackStatTrak, "CBaseAttributableItem->m_nFallbackStatTrak", unsigned);
+	NETVAR(OriginalOwnerXuidLow, "CBaseAttributableItem->m_OriginalOwnerXuidLow", int);
+	NETVAR(OriginalOwnerXuidHigh, "CBaseAttributableItem->m_OriginalOwnerXuidHigh", int);
 };

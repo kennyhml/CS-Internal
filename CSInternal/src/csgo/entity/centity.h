@@ -17,6 +17,11 @@ struct CEntity : public CUnknown, public CRenderable, public CNetworkable, publi
 	virtual bool GetSoundSpatialization(SpatializationInfo& info) = 0;
 	virtual bool IsBlurred(void) = 0;
 
+	Vector3& GetAbsOrigin()
+	{
+		return memory::CallVmtFn<Vector3&>(this, 10);
+	}
+
 	void SetAbsOrigin(const Vector3& origin)
 	{
 		using Fn = void(__thiscall*)(void*, const Vector3&);
