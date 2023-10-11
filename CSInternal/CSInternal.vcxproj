@@ -233,9 +233,7 @@
     <ClInclude Include="src\csgo\interfaces\ienginetraceclient.h" />
     <ClInclude Include="src\csgo\datatable.h" />
     <ClInclude Include="src\csgo\matrix.h" />
-    <ClInclude Include="src\entity.h" />
     <ClInclude Include="src\tools\hash.h" />
-    <ClInclude Include="src\geometry.h" />
     <ClInclude Include="src\core\interfaces.h" />
     <ClInclude Include="src\core\netvar.h" />
     <ClInclude Include="src\tools\memory.h" />
