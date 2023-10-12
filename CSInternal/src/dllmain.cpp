@@ -18,6 +18,7 @@ void MainThread(HMODULE instance)
 	interfaces::Init();
 	SetupNetvars();
 	hooks::Init();
+	fonts::Init();
 
 	globals::localPlayer = interfaces::entityList->FromIndex<CCSPlayer*>(interfaces::engine->GetLocalPlayerIndex());
 	auto lp = globals::localPlayer;

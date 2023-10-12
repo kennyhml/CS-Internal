@@ -5,6 +5,23 @@
 struct CBaseAttributableItem;
 struct CCSPlayer;
 
+enum BONES
+{
+	BONE_HEAD = 6,
+	BONE_NECK = 5,
+	BONE_SPINE = 2,
+	BONE_LEFTSHOULDER = 12,
+	BONE_RIGHTSHOULDER = 33,
+	BONE_LEFTELBOWROLL = 13,
+	BONE_RIGHTELBOWROLL = 34,
+	BONE_LEFTHAND = 64,
+	BONE_RIGHTHAND = 63,
+	BONE_LEFTKNEEROLL = 54,
+	BONE_RIGHTKNEEROLL = 58,
+	BONE_LEFTFOOT = 55,
+	BONE_RIGHTFOOT = 59
+};
+
 struct CBaseEntity : public CEntity
 {
 	NETVAR(Spotted, "CBaseEntity->m_bSpotted", bool);
@@ -88,5 +105,12 @@ struct CBaseEntity : public CEntity
 		return memory::CallVmtFn<bool>(this + 0x4, 13, boneToWorldOut, max, mask, time);
 	}
 
-	Vector3 GetBonePosition(int bone);
+	bool GetBonePosition(int bone, Vector3& vectorOut, float time)
+	{
+		CMatrix3x4 bones[128];
+		if (!SetupBones(bones, 128, 256, time)) { return false; }
+
+		vectorOut = bones[bone].Origin();
+		return true;
+	}
 };

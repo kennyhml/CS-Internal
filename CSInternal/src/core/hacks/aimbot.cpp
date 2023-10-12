@@ -63,6 +63,8 @@ static Vector3 FindBestAngle(CUserCmd* cmd)
 		if (!entity->SetupBones(bones, 128, 256, interfaces::globals->currentTime)) { continue; }
 
 		Vector3 angle = GetAngleToEnemy(cmd, bones, aimPunch, eyePos);
+		if (!(angle.x || angle.y || angle.z)) { continue; }
+
 		float angleFov = hypot(angle.x, angle.y);
 
 		if (angleFov < bestFov) {
