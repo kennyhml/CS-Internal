@@ -5,6 +5,9 @@
 #include <cwchar>
 #include <stdio.h>
 
+
+#define PI 3.14159265359f
+
 const float WIDTH_FACTOR = 0.3f;
 
 void fonts::Init()
@@ -99,6 +102,18 @@ void hacks::Esp(uintptr_t panel)
 		return;
 	}
 
+	int w;
+	int h;
+	interfaces::engine->GetScreenSize(w, h);
+	interfaces::surface->DrawSetColor(0, 0, 0, 255);
+
+	float radAimbotFov = (float)(20.f * PI / 180);
+	float radViewFov = (float)(110 * PI / 180);
+
+	float circleRadius = tanf(radAimbotFov / 2) / tanf(radViewFov / 2) * w;
+
+	interfaces::surface->DrawOutlinedCircle(w / 2, h / 2, circleRadius, 100);
+
 	for (int i = 0; i < interfaces::globals->maxClients; i++)
 	{
 		auto entity = interfaces::entityList->FromIndex<CCSPlayer*>(i);
@@ -120,10 +135,6 @@ void hacks::Esp(uintptr_t panel)
 
 		float distance = entity->GetAbsOrigin().DistTo(globals::localPlayer->GetAbsOrigin());
 		auto rect = GetBoundingRect(top, feet);
-
-		int w;
-		int h;
-		interfaces::engine->GetScreenSize(w, h);
 
 		interfaces::surface->DrawSetColor(255, 255, 255, 255);
 		interfaces::surface->DrawOutlinedRect(rect.x, rect.y, rect.x + rect.w, rect.y + rect.h);

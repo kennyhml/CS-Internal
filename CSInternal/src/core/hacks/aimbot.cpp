@@ -1,6 +1,7 @@
 #include "../hacks.h"
 #include "../interfaces.h"
 #include "../../csgo/entity/cbaseattributableitem.h"
+#include "../../csgo/entity/cplayerinfo.h"
 
 static bool ShouldEqualizeAimPunch()
 {
@@ -36,7 +37,7 @@ static Vector3 GetAngleToEnemy(CUserCmd* cmd, CMatrix3x4* bones, Vector3& aimPun
 		trace
 	);
 
-	bool goodFraction = trace.fraction >= 0.97f;
+	bool goodFraction = trace.fraction >= 0.95f;
 	if (trace.entity && goodFraction) {
 		result = Vector3{ (bones[8].Origin() - eyePos).ToAngle() - (cmd->viewAngles + aimPunch) };
 	}
@@ -45,7 +46,7 @@ static Vector3 GetAngleToEnemy(CUserCmd* cmd, CMatrix3x4* bones, Vector3& aimPun
 
 static Vector3 FindBestAngle(CUserCmd* cmd)
 {
-	float bestFov = 10.f;
+	float bestFov = 20.f;
 	Vector3 bestAngle{};
 
 	Vector3 eyePos = globals::localPlayer->GetEyePosition();
@@ -59,6 +60,9 @@ static Vector3 FindBestAngle(CUserCmd* cmd)
 		auto entity = interfaces::entityList->FromIndex<CCSPlayer*>(i);
 		if (!IsValidTarget(entity)) { continue; }
 
+		CPlayerInfo info;
+		interfaces::engine->GetPlayerInfo(entity->GetIndex(), &info);
+
 		CMatrix3x4 bones[128];
 		if (!entity->SetupBones(bones, 128, 256, interfaces::globals->currentTime)) { continue; }
 
@@ -66,6 +70,7 @@ static Vector3 FindBestAngle(CUserCmd* cmd)
 		if (!(angle.x || angle.y || angle.z)) { continue; }
 
 		float angleFov = hypot(angle.x, angle.y);
+		std::cout << angleFov << std::endl;
 
 		if (angleFov < bestFov) {
 			bestFov = angleFov;

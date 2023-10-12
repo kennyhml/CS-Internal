@@ -92,6 +92,10 @@ struct ISurface
 		memory::CallVmtFn<void, HFont, const wchar_t*, int&, int&>(this, 79, font, text, wideOut, tallOut);
 	}
 
+	void DrawOutlinedCircle(int x, int y, int radius, int segments)
+	{
+		memory::CallVmtFn<void>(this, 103, x, y, radius, segments);
+	}
 
 };
 
