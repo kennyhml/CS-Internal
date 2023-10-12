@@ -31,20 +31,15 @@ static HFont GetFont(float distance)
 	else { return fonts::tiny; }
 }
 
-static const wchar_t* CharToWchar(const char* text)
-{
-	wchar_t wideCharArray[128];
-	size_t converted = mbstowcs_s(NULL, wideCharArray, sizeof(wideCharArray) / sizeof(wideCharArray[0]), text, _TRUNCATE);
-	const wchar_t* wideString = wideCharArray;
-	return wideString;
-}
-
 static void DrawName(const char* name, Rect box, float distance)
 {
 	int textWidth;
 	int textHeight;
 
-	const wchar_t* wname = CharToWchar(name);
+	wchar_t wideCharArray[128];
+	size_t converted = mbstowcs_s(NULL, wideCharArray, sizeof(wideCharArray) / sizeof(wideCharArray[0]), name, _TRUNCATE);
+	const wchar_t* wname = wideCharArray;
+
 	HFont font = GetFont(distance);
 	interfaces::surface->GetTextSize(font, wname, textWidth, textHeight);
 
@@ -58,7 +53,26 @@ static void DrawName(const char* name, Rect box, float distance)
 	interfaces::surface->DrawPrintText(wname, std::wcslen(wname));
 }
 
+static void DrawHealth(int health, Rect box)
+{
+	// Make the health bar 1/20th of the width of the box
+	float width = box.w * 0.05f;
+	float healthX = box.x - width;
 
+	interfaces::surface->DrawSetColor(255, 0, 0);
+
+	float pixelPerHealth = box.h / 100.f;
+	float takenHpHeight = (100 - health) * pixelPerHealth;
+	if (takenHpHeight >= 1.f)
+	{
+		interfaces::surface->DrawFilledRect(healthX, box.y, healthX + width, box.y + takenHpHeight);
+	}
+
+	interfaces::surface->DrawSetColor(0, 255, 0);
+
+	float hpHeight = box.h - takenHpHeight;
+	interfaces::surface->DrawFilledRect(healthX, box.y + takenHpHeight, healthX + width, box.y + box.h);
+}
 
 static bool ShouldDrawEntity(CCSPlayer* entity)
 {
@@ -116,6 +130,7 @@ void hacks::Esp(uintptr_t panel)
 		interfaces::surface->DrawLine(w / 2, h, feet.x, feet.y);
 
 		DrawName(info.name, rect, distance);
+		DrawHealth(entity->GetHealth(), rect);
 	}
 }
 
