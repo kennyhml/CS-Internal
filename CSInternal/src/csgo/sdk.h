@@ -4,3 +4,5 @@
 #include "entity/cplayerinfo.h"
 #include "entity/cbasecombatweapon.h"
 #include "entity/cbasecombatcharacter.h"
+#include "entity/cbaseattributableitem.h"
+

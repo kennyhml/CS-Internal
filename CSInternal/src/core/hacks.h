@@ -4,12 +4,15 @@
 
 namespace fonts
 {
-	inline HFont tiny;
-	inline HFont medium;
-	inline HFont big;
+	inline HFont textTiny;
+	inline HFont textMedium;
+	inline HFont textBig;
+
+	inline HFont weaponTiny;
+	inline HFont weaponMedium;
+	inline HFont weaponBig;
 
 	void Init();
-
 }
 
 

@@ -5,7 +5,7 @@ struct CRecvTable;
 
 struct CClientClass
 {
-	enum EClassID : int32_t
+	enum ClassID : int32_t
 	{
 		CAI_BaseNPC = 0,
 		CAK47,
@@ -292,6 +292,8 @@ struct CClientClass
 		SporeExplosion,
 		SporeTrail,
 	};
+
+
 
 	void* createFn;
 	void* createEventFn;

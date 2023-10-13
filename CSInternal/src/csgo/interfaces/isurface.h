@@ -62,7 +62,7 @@ struct ISurface
 		memory::CallVmtFn<void>(this, 23, font);
 	}
 
-	void DrawSetTextColor(int r, int g, int b, int a)
+	void DrawSetTextColor(int r, int g, int b, int a = 255)
 	{
 		memory::CallVmtFn<void>(this, 25, r, g, b, a);
 	}
@@ -85,6 +85,11 @@ struct ISurface
 	void SetFontGlyphSet(HFont font, const char* windowsFontName, int tall, int weight, int blur, int scanlines, int flags)
 	{
 		memory::CallVmtFn<void>(this, 72, font, windowsFontName, tall, weight, blur, scanlines, flags, NULL, NULL);
+	}
+
+	int32_t GetFontTall(HFont font)
+	{
+		return memory::CallVmtFn<int32_t>(this, 74, font);
 	}
 
 	void GetTextSize(HFont font, const wchar_t* text, int& wideOut, int& tallOut)

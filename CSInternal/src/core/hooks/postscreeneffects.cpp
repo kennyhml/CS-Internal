@@ -8,7 +8,7 @@ static bool IsEnemy(CBaseEntity* entity)
 static void SetGlowColor(IGlowObjectManager::CGlowObject& object)
 {
 	auto entity = object.entity;
-	auto id = static_cast<CClientClass::EClassID>(entity->GetClientClass()->classID);
+	auto id = static_cast<CClientClass::ClassID>(entity->GetClientClass()->classID);
 
 	switch (id)
 	{

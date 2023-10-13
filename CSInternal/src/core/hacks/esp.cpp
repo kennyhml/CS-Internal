@@ -2,36 +2,147 @@
 #include "../hacks.h"
 #include "../interfaces.h"
 #include "../../csgo/entity/cplayerinfo.h"
+#include "../../csgo/entity/cbaseattributableitem.h"
+
 #include <cwchar>
 #include <stdio.h>
 
-
 #define PI 3.14159265359f
-
 const float WIDTH_FACTOR = 0.3f;
 
-void fonts::Init()
-{
-	tiny = interfaces::surface->CreateFont_();
-	medium = interfaces::surface->CreateFont_();
-	big = interfaces::surface->CreateFont_();
+// defuse kit = f
 
-	interfaces::surface->SetFontGlyphSet(tiny, "Arial", 12, 700, 0, 0, FONTFLAG_DROPSHADOW);
-	interfaces::surface->SetFontGlyphSet(medium, "Arial", 18, 700, 0, 0, FONTFLAG_DROPSHADOW);
-	interfaces::surface->SetFontGlyphSet(big, "Arial", 35, 700, 0, 0, FONTFLAG_DROPSHADOW);
-}
+// sg556
+
 
 struct Rect
 {
 	float x, y, w, h;
-
 };
 
-static HFont GetFont(float distance)
+void fonts::Init()
 {
-	if (distance < 350) { return fonts::big; }
-	else if (distance < 700) { return fonts::medium; }
-	else { return fonts::tiny; }
+	// Text fonts
+	textTiny = interfaces::surface->CreateFont_();
+	textMedium = interfaces::surface->CreateFont_();
+	textBig = interfaces::surface->CreateFont_();
+	interfaces::surface->SetFontGlyphSet(textTiny, "Arial", 12, 700, 0, 0, FONTFLAG_DROPSHADOW);
+	interfaces::surface->SetFontGlyphSet(textMedium, "Arial", 18, 700, 0, 0, FONTFLAG_DROPSHADOW);
+	interfaces::surface->SetFontGlyphSet(textBig, "Arial", 35, 700, 0, 0, FONTFLAG_DROPSHADOW);
+
+	// Weapon icon fonts
+	weaponTiny = interfaces::surface->CreateFont_();
+	weaponMedium = interfaces::surface->CreateFont_();
+	weaponBig = interfaces::surface->CreateFont_();
+	interfaces::surface->SetFontGlyphSet(weaponTiny, "Counter-Strike", 18, 700, 0, 0, FONTFLAG_ANTIALIAS);
+	interfaces::surface->SetFontGlyphSet(weaponMedium, "Counter-Strike", 30, 700, 0, 0, FONTFLAG_ANTIALIAS);
+	interfaces::surface->SetFontGlyphSet(weaponBig, "Counter-Strike", 50, 700, 0, 0, FONTFLAG_ANTIALIAS);
+}
+
+static HFont GetTextFont(float targetDistance)
+{
+	if (targetDistance < 350) { return fonts::textBig; }
+	else if (targetDistance < 700) { return fonts::textMedium; }
+	else { return fonts::textTiny; }
+}
+
+static HFont GetWeaponFont(float targetDistance)
+{
+	if (targetDistance < 350) { return fonts::weaponBig; }
+	else if (targetDistance < 700) { return fonts::weaponMedium; }
+	else { return fonts::weaponTiny; }
+}
+
+static const wchar_t* GetWeaponIcon(int32_t weaponID)
+{
+	switch (weaponID)
+	{
+	case CClientClass::CWeaponHKP2000:
+		return L"A";
+
+	case CClientClass::CAK47:
+		return L"B";
+
+	case CClientClass::CWeaponGlock:
+		return L"C";
+
+	case CClientClass::CWeaponMP9: // not sure here
+		return L"D";
+
+	case CClientClass::CWeaponAug:
+		return L"E";
+
+	case CClientClass::CDEagle:
+		return L"F";
+
+	case CClientClass::CSmokeGrenade:
+		return L"G";
+
+	case CClientClass::CHEGrenade:
+		return L"H";
+
+	case CClientClass::CWeaponG3SG1:
+		return L"I";
+
+	case CClientClass::CKnife:
+	case CClientClass::CKnifeGG:
+		return L"J";
+
+	case CClientClass::CWeaponXM1014:
+		return L"K";
+
+	case CClientClass::CWeaponMAC10:
+		return L"L";
+
+	case CClientClass::CWeaponP90:
+		return L"M";
+
+	case CClientClass::CWeaponAWP:
+		return L"N";
+
+	case CClientClass::CWeaponSCAR20:
+		return L"O";
+
+	case CClientClass::CFlashbang: // not sure 
+		return L"P";
+
+	case CClientClass::CWeaponUMP45:
+		return L"Q";
+
+	case 999: // not sure , awp too?
+		return L"R";
+
+	case 1000: // dual barretas
+		return L"S";
+
+	case CClientClass::CWeaponFamas:
+		return L"T";
+
+	case CClientClass::CWeaponFiveSeven:
+		return L"U";
+
+	case CClientClass::CWeaponGalil:
+	case CClientClass::CWeaponGalilAR:
+		return L"V";
+
+	case CClientClass::CWeaponM4A1:
+		return L"W";
+
+	case CClientClass::CWeaponMP5Navy:
+		return L"X";
+
+	case 1001: // CWeaponHKP2000?
+		return L"Y";
+
+	case 1002: // irgendwas fettes?
+		return L"Z";
+
+	case CClientClass::CC4:
+		return L"a";
+
+	default:
+		return L"???";
+	}
 }
 
 static void DrawName(const char* name, Rect box, float distance)
@@ -43,7 +154,7 @@ static void DrawName(const char* name, Rect box, float distance)
 	size_t converted = mbstowcs_s(NULL, wideCharArray, sizeof(wideCharArray) / sizeof(wideCharArray[0]), name, _TRUNCATE);
 	const wchar_t* wname = wideCharArray;
 
-	HFont font = GetFont(distance);
+	HFont font = GetTextFont(distance);
 	interfaces::surface->GetTextSize(font, wname, textWidth, textHeight);
 
 	float rectCenterX = box.x + (box.w / 2);
@@ -54,6 +165,25 @@ static void DrawName(const char* name, Rect box, float distance)
 	interfaces::surface->DrawSetTextFont(font);
 	interfaces::surface->DrawSetTextPos(textX, textY);
 	interfaces::surface->DrawPrintText(wname, std::wcslen(wname));
+}
+
+static void DrawWeapon(int weaponID, Rect box, float distance)
+{
+	int textWidth;
+	int textHeight;
+	const wchar_t* weaponIcon = GetWeaponIcon(weaponID);
+
+	HFont font = GetWeaponFont(distance);
+	interfaces::surface->GetTextSize(font, weaponIcon, textWidth, textHeight);
+
+	float rectCenterX = box.x + (box.w / 2);
+	float textX = rectCenterX - (textWidth / 2);
+	float textY = box.y + box.h + 2;
+
+	interfaces::surface->DrawSetTextColor(255, 255, 255);
+	interfaces::surface->DrawSetTextFont(font);
+	interfaces::surface->DrawSetTextPos(textX, textY);
+	interfaces::surface->DrawPrintText(weaponIcon, std::wcslen(weaponIcon));
 }
 
 static void DrawHealth(int health, Rect box)
@@ -140,10 +270,15 @@ void hacks::Esp(uintptr_t panel)
 		interfaces::surface->DrawOutlinedRect(rect.x, rect.y, rect.x + rect.w, rect.y + rect.h);
 		interfaces::surface->DrawLine(w / 2, h, feet.x, feet.y);
 
+		auto weapon = entity->GetActiveWeapon();
+		if (!weapon) { continue; } // player might have died
+		auto id = static_cast<CClientClass::ClassID>(weapon->GetClientClass()->classID);
+
 		DrawName(info.name, rect, distance);
+		DrawWeapon(id, rect, distance);
 		DrawHealth(entity->GetHealth(), rect);
+
+
 	}
 }
-
-
 
