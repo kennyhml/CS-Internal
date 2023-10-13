@@ -72,6 +72,9 @@
     <ClCompile Include="src\core\hacks\esp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\hacks\antiflash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\interfaces.h">

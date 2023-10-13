@@ -23,4 +23,6 @@ namespace hacks
 	void TriggerBot(CUserCmd* cmd);
 	void Aimbot(CUserCmd* cmd);
 	void Esp(uintptr_t panel);
+	void AntiFlash();
+
 }

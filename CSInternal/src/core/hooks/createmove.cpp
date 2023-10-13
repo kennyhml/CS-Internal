@@ -8,6 +8,7 @@ bool __stdcall hooks::CreateMove(float frameTime, CUserCmd* cmd)
 
 	hacks::BunnyHop(cmd);
 	hacks::TriggerBot(cmd);
+	hacks::AntiFlash();
 
 	if (result) { interfaces::engine->SetViewAngles(cmd->viewAngles); }
 	hacks::Aimbot(cmd);

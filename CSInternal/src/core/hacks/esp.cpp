@@ -3,17 +3,11 @@
 #include "../interfaces.h"
 #include "../../csgo/entity/cplayerinfo.h"
 #include "../../csgo/entity/cbaseattributableitem.h"
-
 #include <cwchar>
 #include <stdio.h>
 
 #define PI 3.14159265359f
 const float WIDTH_FACTOR = 0.3f;
-
-// defuse kit = f
-
-// sg556
-
 
 struct Rect
 {
@@ -59,87 +53,60 @@ static const wchar_t* GetWeaponIcon(int32_t weaponID)
 	{
 	case CClientClass::CWeaponHKP2000:
 		return L"A";
-
 	case CClientClass::CAK47:
 		return L"B";
-
 	case CClientClass::CWeaponGlock:
 		return L"C";
-
 	case CClientClass::CWeaponMP9: // not sure here
 		return L"D";
-
 	case CClientClass::CWeaponAug:
 		return L"E";
-
 	case CClientClass::CDEagle:
 		return L"F";
-
 	case CClientClass::CSmokeGrenade:
 		return L"G";
-
 	case CClientClass::CHEGrenade:
 		return L"H";
-
 	case CClientClass::CWeaponG3SG1:
 		return L"I";
-
 	case CClientClass::CKnife:
 	case CClientClass::CKnifeGG:
 		return L"J";
-
 	case CClientClass::CWeaponXM1014:
 		return L"K";
-
 	case CClientClass::CWeaponMAC10:
 		return L"L";
-
 	case CClientClass::CWeaponP90:
 		return L"M";
-
 	case CClientClass::CWeaponAWP:
 		return L"N";
-
 	case CClientClass::CWeaponSCAR20:
 		return L"O";
-
 	case CClientClass::CFlashbang: // not sure 
 		return L"P";
-
 	case CClientClass::CWeaponUMP45:
 		return L"Q";
-
 	case 999: // not sure , awp too?
 		return L"R";
-
 	case 1000: // dual barretas
 		return L"S";
-
 	case CClientClass::CWeaponFamas:
 		return L"T";
-
 	case CClientClass::CWeaponFiveSeven:
 		return L"U";
-
 	case CClientClass::CWeaponGalil:
 	case CClientClass::CWeaponGalilAR:
 		return L"V";
-
 	case CClientClass::CWeaponM4A1:
 		return L"W";
-
 	case CClientClass::CWeaponMP5Navy:
 		return L"X";
-
 	case 1001: // CWeaponHKP2000?
 		return L"Y";
-
 	case 1002: // irgendwas fettes?
 		return L"Z";
-
 	case CClientClass::CC4:
 		return L"a";
-
 	default:
 		return L"???";
 	}
@@ -188,8 +155,8 @@ static void DrawWeapon(int weaponID, Rect box, float distance)
 
 static void DrawHealth(int health, Rect box)
 {
-	// Make the health bar 1/20th of the width of the box
-	float width = box.w * 0.05f;
+	// Make the health bar 1/40th of the width of the box
+	float width = box.w * 0.025f;
 	float healthX = box.x - width;
 
 	interfaces::surface->DrawSetColor(255, 0, 0);
@@ -231,7 +198,6 @@ void hacks::Esp(uintptr_t panel)
 		|| !globals::localPlayer || !interfaces::engine->IsInGame()) {
 		return;
 	}
-
 	int w;
 	int h;
 	interfaces::engine->GetScreenSize(w, h);
@@ -239,7 +205,6 @@ void hacks::Esp(uintptr_t panel)
 
 	float radAimbotFov = (float)(20.f * PI / 180);
 	float radViewFov = (float)(110 * PI / 180);
-
 	float circleRadius = tanf(radAimbotFov / 2) / tanf(radViewFov / 2) * w;
 
 	interfaces::surface->DrawOutlinedCircle(w / 2, h / 2, circleRadius, 100);
