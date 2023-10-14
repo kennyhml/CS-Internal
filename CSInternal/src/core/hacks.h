@@ -15,8 +15,6 @@ namespace fonts
 	void Init();
 }
 
-
-
 namespace hacks
 {
 	void BunnyHop(CUserCmd* cmd);
@@ -24,5 +22,5 @@ namespace hacks
 	void Aimbot(CUserCmd* cmd);
 	void Esp(uintptr_t panel);
 	void AntiFlash();
-
+	void ChangeSkins();
 }

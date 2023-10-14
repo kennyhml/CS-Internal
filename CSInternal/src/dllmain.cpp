@@ -4,7 +4,6 @@
 #include <iostream>
 #include "csgo/sdk.h"
 #include "core/hooks.h"
-#include "csgo/entity/cbaseattributableitem.h"
 #include "csgo/entity/cweapondata.h"
 
 FILE* fConsole = nullptr;

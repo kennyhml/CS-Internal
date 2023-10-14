@@ -24,7 +24,7 @@ static std::vector<int> PatternToBytes(const char* pattern)
 	return result;
 }
 
-BYTE* memory::FindPattern(const char* moduleName, const char* pattern)
+BYTE* memory::FindPattern(const char* moduleName, const char* pattern, int offset)
 {
 	HMODULE handle = GetModuleHandle(moduleName);
 
@@ -54,8 +54,13 @@ BYTE* memory::FindPattern(const char* moduleName, const char* pattern)
 			}
 		}
 
-		if (found)
-			return &scanBytes[i];
+		if (found) { return (&scanBytes[i]) + offset; }
 	}
 	throw std::runtime_error("Pattern not found: " + std::string(pattern));
+}
+
+BYTE* memory::FindPattern(Signature signature)
+{
+	if (signature.foundAt) { return signature.foundAt; }
+	return FindPattern(signature.module, signature.signature, signature.offset);
 }

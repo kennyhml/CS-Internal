@@ -22,17 +22,4 @@ struct CEntity : public CUnknown, public CRenderable, public CNetworkable, publi
 		return memory::CallVmtFn<Vector3&>(this, 10);
 	}
 
-	void SetAbsOrigin(const Vector3& origin)
-	{
-		using Fn = void(__thiscall*)(void*, const Vector3&);
-		static auto SetAbsOrigin = reinterpret_cast<Fn>(memory::offsets::setAbsOrigin);
-		SetAbsOrigin(this, origin);
-	}
-
-	void SetAbsAngles(const Vector3& angles)
-	{
-		using Fn = void(__thiscall*)(void*, const Vector3&);
-		static auto SetAbsAngles = reinterpret_cast<Fn>(memory::offsets::setAbsAngles);
-		SetAbsAngles(this, angles);
-	}
 };

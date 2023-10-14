@@ -32,6 +32,12 @@ void hooks::Init()
 		reinterpret_cast<void**>(&oPaintTraverse)
 	);
 
+	MH_CreateHook(
+		memory::GetVmtFn(interfaces::client, 37),
+		&FrameStageNotify,
+		reinterpret_cast<void**>(&oFrameStageNotify)
+	);
+
 	MH_EnableHook(MH_ALL_HOOKS);
 }
 

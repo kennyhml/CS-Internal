@@ -70,8 +70,6 @@ static Vector3 FindBestAngle(CUserCmd* cmd)
 		if (!(angle.x || angle.y || angle.z)) { continue; }
 
 		float angleFov = hypot(angle.x, angle.y);
-		std::cout << angleFov << std::endl;
-
 		if (angleFov < bestFov) {
 			bestFov = angleFov;
 			bestAngle = angle;

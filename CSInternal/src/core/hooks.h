@@ -4,10 +4,13 @@
 
 struct CUserCmd;
 
+
 namespace hooks
 {
 	void Init();
 	void Destroy();
+
+	enum ClientFrameStage;
 
 	using CreateMoveFn = bool(__thiscall*)(void*, float, CUserCmd*);
 	inline CreateMoveFn oCreateMove = nullptr;
@@ -31,5 +34,14 @@ namespace hooks
 	using PaintTraverseFn = void(__thiscall*)(IPanel*, uintptr_t, bool, bool);
 	inline PaintTraverseFn oPaintTraverse = nullptr;
 	void __stdcall PaintTraverse(uintptr_t panel, bool repaint, bool allowForce);
+
+
+	using FrameStageNotifyFn = void(__stdcall*)(ClientFrameStage currentStage);
+	inline FrameStageNotifyFn oFrameStageNotify = nullptr;
+	void __stdcall FrameStageNotify(ClientFrameStage currentStage);
+
+
+
+
 }
 
