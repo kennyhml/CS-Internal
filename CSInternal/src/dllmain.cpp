@@ -15,14 +15,14 @@ void MainThread(HMODULE instance)
 	std::cout << "DLL injected!\n";
 
 	interfaces::Init();
-	SetupNetvars();
-	hooks::Init();
-	fonts::Init();
-
 	globals::localPlayer = interfaces::entityList->FromIndex<CCSPlayer*>(interfaces::engine->GetLocalPlayerIndex());
-	auto lp = globals::localPlayer;
+
+	SetupNetvars();
+	fonts::Init();
+	hooks::Init();
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
+		globals::localPlayer->CanMoveDuringFreezePeriod() = true;
 		Sleep(5);
 		continue;
 	}

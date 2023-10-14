@@ -14,6 +14,9 @@
 #include "../csgo/interfaces/ienginevgui.h"
 #include "../csgo/interfaces/idebugoverlay.h"
 #include "../csgo/interfaces/isurface.h"
+#include "../csgo/interfaces/imodelinfo.h"
+
+
 
 namespace interfaces
 {
@@ -36,4 +39,5 @@ namespace interfaces
 	inline IEngineVGui* engineVGui = nullptr;
 	inline IDebugOverlay* debugOverlay = nullptr;
 	inline ISurface* surface = nullptr;
+	inline IModelInfo* modelInfo = nullptr;
 }

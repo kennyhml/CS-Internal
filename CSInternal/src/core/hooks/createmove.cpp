@@ -6,6 +6,7 @@ bool __stdcall hooks::CreateMove(float frameTime, CUserCmd* cmd)
 	const bool result = oCreateMove(interfaces::clientMode, frameTime, cmd);
 	if (!cmd->commandNumber) { return result; }
 
+	globals::localPlayer = interfaces::entityList->FromIndex<CCSPlayer*>(interfaces::engine->GetLocalPlayerIndex());
 	hacks::BunnyHop(cmd);
 	hacks::TriggerBot(cmd);
 	hacks::AntiFlash();

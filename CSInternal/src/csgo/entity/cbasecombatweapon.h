@@ -12,5 +12,5 @@ struct CBaseCombatWeapon : public CBaseEntity
 	NETVAR(ViewModelIndex, "CBaseCombatWeapon->m_iViewModelIndex", int);
 	NETVAR(WorldModelIndex, "CBaseCombatWeapon->m_iWorldModelIndex", int);
 	NETVAR(WorldDroppedModelIndex, "CBaseCombatWeapon->m_iWorldDroppedModelIndex", int);
-	NETVAR(WeaponWorldModel, "CBaseCombatWeapon->m_hWeaponWorldModel", BaseHandle);
+	NETVAR(WeaponWorldModel, "CBaseCombatWeapon->m_hWeaponWorldModel", int);
 };

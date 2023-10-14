@@ -260,6 +260,9 @@
     <ClInclude Include="src\csgo\interfaces\isurface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\csgo\interfaces\imodelinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\netvar_dump.txt" />

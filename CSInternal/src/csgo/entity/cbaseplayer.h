@@ -1,7 +1,6 @@
 #pragma once
 #include "cbasecombatcharacter.h"
 
-
 enum CPlayerFlag : uint32_t
 {
 	FL_ONGROUND = (1 << 0),
@@ -19,7 +18,7 @@ struct CBasePlayer : public CBaseCombatCharacter
 {
 	NETVAR(Flags, "CBasePlayer->m_fFlags", int);
 	NETVAR(Velocity, "CBasePlayer->m_vecVelocity[0]", Vector3);
-	NETVAR(ViewModel, "CBasePlayer->m_hViewModel[0]", BaseHandle);
+	NETVAR(ViewModelHandle, "CBasePlayer->m_hViewModel[0]", int);
 	NETVAR(ViewOffset, "CBasePlayer->m_vecViewOffset[0]", Vector3);
 	NETVAR(TickBase, "CBasePlayer->m_nTickBase", int);
 	NETVAR(IsDead, "CBasePlayer->deadflag", bool);
@@ -28,5 +27,4 @@ struct CBasePlayer : public CBaseCombatCharacter
 	NETVAR(Fov, "CBasePlayer->m_iFOV", int32_t);
 	NETVAR(ObserverMode, "CBasePlayer->m_iObserverMode", int32_t);
 	NETVAR(Ducked, "CBasePlayer->m_bDucked", bool);
-
 };

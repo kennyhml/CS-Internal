@@ -220,6 +220,7 @@
     <ClInclude Include="src\csgo\interfaces\iglobalvarsbase.h" />
     <ClInclude Include="src\csgo\interfaces\iglowmanager.h" />
     <ClInclude Include="src\csgo\interfaces\imaterialsystem.h" />
+    <ClInclude Include="src\csgo\interfaces\imodelinfo.h" />
     <ClInclude Include="src\csgo\interfaces\istudiorender.h" />
     <ClInclude Include="src\csgo\interfaces\ipanel.h" />
     <ClInclude Include="src\csgo\interfaces\isurface.h" />

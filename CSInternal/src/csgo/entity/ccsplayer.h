@@ -24,4 +24,6 @@ struct CCSPlayer : public CBasePlayer
 	NETVAR(MatchDamage, "CCSPlayer->m_iMatchStats_Damage", int32_t);
 	NETVAR(MatchEnemiesFlashed, "CCSPlayer->m_iMatchStats_EnemiesFlashed", int32_t);
 	NETVAR(MoveState, "CCSPlayer->m_iMoveState", int32_t);
+	NETVAR(LookingAtWeapon, "CCSPlayer->m_bIsLookingAtWeapon", bool);
+	NETVAR(IsHoldingLookAtWeapon, "CCSPlayer->m_bIsHoldingLookAtWeapon", bool);
 };
