@@ -1,2 +1,2 @@
-# csgo-cheat
-A cheat
+# CS-Internal
+Internal cheat for counter-strike
