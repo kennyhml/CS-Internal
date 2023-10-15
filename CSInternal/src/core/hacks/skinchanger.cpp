@@ -1,10 +1,28 @@
 #include "../hacks.h"
 #include "../interfaces.h"
-#include "../../csgo/entity/cbaseattributableitem.h"
 #include "../../csgo/entity/cplayerinfo.h"
 #include "../../csgo/entity/cbaseviewmodel.h"
+#include <unordered_map>
 
-int hacks::skins::GetWeaponPaint(int32_t weaponID)
+std::unordered_map<ItemDefinitionIndex, const char*> knifeModels
+{
+	{ItemDefinitionIndex::WEAPON_KNIFE, "models/weapons/v_knife_default_ct.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_T, "models/weapons/v_knife_default_t.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_FLIP, "models/weapons/v_knife_flip.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_FLIP, "models/weapons/v_knife_flip.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_GUT, "models/weapons/v_knife_gut.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_KARAMBIT, "models/weapons/v_knife_karam.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_M9_BAYONET, "models/weapons/v_knife_m9_bay.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_TACTICAL, "models/weapons/v_knife_tactical.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_FALCHION, "models/weapons/v_knife_falchion_advanced.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_SURVIVAL_BOWIE, "models/weapons/v_knife_survival_bowie.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_BUTTERFLY, "models/weapons/v_knife_butterfly.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_FALCHION, "models/weapons/v_knife_falchion_advanced.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_PUSH, "models/weapons/v_knife_push.mdl"},
+	{ItemDefinitionIndex::WEAPON_BAYONET, "models/weapons/v_knife_bayonet.mdl"},
+};
+
+hacks::skins::Skin hacks::skins::GetWeaponSkin(int32_t weaponID)
 {
 	switch (weaponID)
 	{
@@ -31,6 +49,40 @@ void hacks::skins::ForceUpdateWeapon(CBaseAttributableItem* weapon)
 	weapon->OnDataChanged(DataUpdateType::DATA_UPDATE_CREATED);
 }
 
+void ChangeKnifeModel(CBaseAttributableItem* knife)
+{
+	int viewModelHandle = globals::localPlayer->ViewModelHandle();
+	auto viewModel = interfaces::entityList->FromHandle<CBaseViewModel*>(viewModelHandle);
+	auto targetModelID = ItemDefinitionIndex::WEAPON_KNIFE_FALCHION;
+
+	int targetModelIndex = interfaces::modelInfo->GetModelIndex(knifeModels[targetModelID]);
+	if (targetModelIndex == -1) { std::cout << "Invalid knife model index!\n"; }
+
+	if (!viewModel || viewModel->ModelIndex() == targetModelIndex) { return; }
+
+	std::cout << "[+] Need to update knife model!\n";
+	viewModel->ModelIndex() = targetModelIndex;
+	knife->ViewModelIndex() = targetModelIndex;
+	knife->ItemDefinitionIndex() = targetModelID;
+
+	knife->WorldModelIndex() = targetModelIndex + 1;
+	knife->ModelIndex() = targetModelIndex;
+	std::cout << "[+] Knife model updated!\n";
+}
+
+bool hacks::skins::SetSkin(CBaseAttributableItem* weapon, Skin skin)
+{
+	if (weapon->FallbackPaintKit() == skin) { return false; };
+
+	// -1 forces the weapon to use the fallback stats
+	weapon->ItemIDHigh() = -1;
+	weapon->FallbackPaintKit() = skin;
+
+	// float from 0 to 1 determining how worn down the weapon looks.
+	weapon->FallbackWear() = 0.f;
+	return true;
+}
+
 void hacks::skins::Change()
 {
 	if (!interfaces::engine->IsInGame()
@@ -39,45 +91,26 @@ void hacks::skins::Change()
 		return;
 	}
 
-	CPlayerInfo myInfo;
-	interfaces::engine->GetPlayerInfo(globals::localPlayer->GetIndex(), &myInfo);
-
 	auto weapons = globals::localPlayer->Weapons();
-	auto viewModel = interfaces::entityList->FromHandle<CBaseViewModel*>(globals::localPlayer->ViewModelHandle());
-
-	bool anyUpdated = false;
 
 	for (auto weaponHandle : weapons)
 	{
 		auto weapon = interfaces::entityList->FromHandle<CBaseAttributableItem*>(weaponHandle);
 		if (!weapon) { continue; }
 
-		auto classID = weapon->GetClientClass()->classID;
+		int classID = weapon->GetClientClass()->classID;
+		int skinToApply = GetWeaponSkin(classID);
+		if (!skinToApply) { continue; }
 
-		int paint = GetWeaponPaint(classID);
-		if (!paint) { continue; } // no paint known for that weapon
-
-		int butterfly = interfaces::modelInfo->GetModelIndex("models/weapons/v_knife_karam.mdl");
-		if (classID == CClientClass::CKnife && viewModel && viewModel->ModelIndex() != butterfly && weaponHandle == globals::localPlayer->ActiveWeapon())
-		{
-			std::cout << "Knife updated!\n";
-			weapon->ItemDefinitionIndex() = 507;
-			viewModel->ModelIndex() = butterfly;
-			weapon->WorldModelIndex() = butterfly + 1;
-			weapon->ModelIndex() = butterfly;
-			weapon->ViewModelIndex() = butterfly;
+		// changing the knife model, only do it when active otherwise the color derps out
+		if (classID == CClientClass::CKnife) {
+			if (weaponHandle != globals::localPlayer->ActiveWeapon()) { continue; }
+			ChangeKnifeModel(weapon);
 		}
 
-		if (weapon->FallbackPaintKit() == paint) { continue; };
-
-		std::cout << weapon->GetClientClass()->networkName << " needs to be updated!\n";
-
-		weapon->ItemIDHigh() = -1;
-		weapon->FallbackPaintKit() = paint;
-		weapon->FallbackWear() = 0.f;
-
-		weapon->OriginalOwnerXuidLow() = myInfo.xuidLow;
-		ForceUpdateWeapon(weapon);
+		if (SetSkin(weapon, skinToApply)) {
+			ForceUpdateWeapon(weapon);
+		}
 	}
 }
 

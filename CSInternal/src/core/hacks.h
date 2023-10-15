@@ -1,6 +1,7 @@
-#include "../csgo/cusercmd.h"
 #include "globals.h"
+#include "../csgo/cusercmd.h"
 #include "../csgo/interfaces/isurface.h"
+#include "../csgo/entity/cbaseattributableitem.h"
 
 namespace hacks
 {
@@ -34,13 +35,13 @@ namespace hacks
 
 	inline namespace skins
 	{
-		int GetWeaponPaint(int32_t weaponID);
+		using Skin = uint32_t;
+
+		Skin GetWeaponSkin(int32_t weaponID);
+		bool SetSkin(CBaseAttributableItem* weapon, Skin skin);
 		void ForceUpdateWeapon(CBaseAttributableItem* weapon);
 		void Change();
-
-
 	}
-
 
 	void BunnyHop(CUserCmd* cmd);
 	void TriggerBot(CUserCmd* cmd);

@@ -22,7 +22,6 @@ void MainThread(HMODULE instance)
 	hooks::Init();
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
-		globals::localPlayer->CanMoveDuringFreezePeriod() = true;
 		Sleep(5);
 		continue;
 	}
