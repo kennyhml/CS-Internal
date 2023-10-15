@@ -18,7 +18,7 @@ void MainThread(HMODULE instance)
 	globals::localPlayer = interfaces::entityList->FromIndex<CCSPlayer*>(interfaces::engine->GetLocalPlayerIndex());
 
 	SetupNetvars();
-	fonts::Init();
+	hacks::esp::fonts::Init();
 	hooks::Init();
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {

@@ -15,7 +15,7 @@ enum hooks::ClientFrameStage : int32_t {
 void __stdcall hooks::FrameStageNotify(ClientFrameStage currentStage)
 {
 	if (currentStage == FRAME_NET_UPDATE_POSTDATAUPDATE_START) {
-		hacks::ChangeSkins();
+		hacks::skins::Change();
 	}
 
 	return oFrameStageNotify(currentStage);

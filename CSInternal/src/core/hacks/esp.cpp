@@ -9,12 +9,7 @@
 #define PI 3.14159265359f
 const float WIDTH_FACTOR = 0.3f;
 
-struct Rect
-{
-	float x, y, w, h;
-};
-
-void fonts::Init()
+void hacks::esp::fonts::Init()
 {
 	// Text fonts
 	textTiny = interfaces::surface->CreateFont_();
@@ -33,21 +28,21 @@ void fonts::Init()
 	interfaces::surface->SetFontGlyphSet(weaponBig, "Counter-Strike", 50, 700, 0, 0, FONTFLAG_ANTIALIAS);
 }
 
-static HFont GetTextFont(float targetDistance)
+HFont hacks::esp::GetTextFont(float targetDistance)
 {
 	if (targetDistance < 350) { return fonts::textBig; }
 	else if (targetDistance < 700) { return fonts::textMedium; }
 	else { return fonts::textTiny; }
 }
 
-static HFont GetWeaponFont(float targetDistance)
+HFont hacks::esp::GetWeaponFont(float targetDistance)
 {
 	if (targetDistance < 350) { return fonts::weaponBig; }
 	else if (targetDistance < 700) { return fonts::weaponMedium; }
 	else { return fonts::weaponTiny; }
 }
 
-static const wchar_t* GetWeaponIcon(int32_t weaponID)
+const wchar_t* hacks::esp::GetWeaponIcon(int32_t weaponID)
 {
 	switch (weaponID)
 	{
@@ -112,7 +107,7 @@ static const wchar_t* GetWeaponIcon(int32_t weaponID)
 	}
 }
 
-static void DrawName(const char* name, Rect box, float distance)
+void hacks::esp::DrawName(const char* name, Rect box, float distance)
 {
 	int textWidth;
 	int textHeight;
@@ -134,7 +129,7 @@ static void DrawName(const char* name, Rect box, float distance)
 	interfaces::surface->DrawPrintText(wname, std::wcslen(wname));
 }
 
-static void DrawWeapon(int weaponID, Rect box, float distance)
+void hacks::esp::DrawWeapon(int weaponID, Rect box, float distance)
 {
 	int textWidth;
 	int textHeight;
@@ -153,7 +148,7 @@ static void DrawWeapon(int weaponID, Rect box, float distance)
 	interfaces::surface->DrawPrintText(weaponIcon, std::wcslen(weaponIcon));
 }
 
-static void DrawHealth(int health, Rect box)
+void hacks::esp::DrawHealth(int health, Rect box)
 {
 	// Make the health bar 1/40th of the width of the box
 	float width = box.w * 0.025f;
@@ -174,7 +169,7 @@ static void DrawHealth(int health, Rect box)
 	interfaces::surface->DrawFilledRect(healthX, box.y + takenHpHeight, healthX + width, box.y + box.h);
 }
 
-static bool ShouldDrawEntity(CCSPlayer* entity)
+bool hacks::esp::ShouldDrawEntity(CCSPlayer* entity)
 {
 	return (entity && entity->IsAlive() && entity->IsPlayer() && !entity->IsDormant()
 		&& entity->GetTeam() != globals::localPlayer->GetTeam()
@@ -182,7 +177,7 @@ static bool ShouldDrawEntity(CCSPlayer* entity)
 			&& globals::localPlayer->GetObserverTarget() == entity));
 }
 
-static Rect GetBoundingRect(const Vector3& top, const Vector3& bottom)
+hacks::esp::Rect hacks::esp::GetBoundingRect(const Vector3& top, const Vector3& bottom)
 {
 	float height = bottom.y - top.y;
 	// The width is the distance from the center x to the right / left x,
@@ -191,7 +186,7 @@ static Rect GetBoundingRect(const Vector3& top, const Vector3& bottom)
 	return Rect{ top.x - width, top.y, width * 2, height };
 }
 
-void hacks::Esp(uintptr_t panel)
+void hacks::esp::Run(uintptr_t panel)
 {
 	// We wanna use the tool panel to draw cause its always available
 	if (panel != interfaces::engineVGui->GetPanel(PANEL_TOOLS)
