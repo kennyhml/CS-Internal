@@ -1,5 +1,5 @@
 #pragma once
-#include "../entity/centity.h"
+#include "../entities/centity.h"
 
 struct IClientEntityList
 {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "entity/ccsplayer.h"
-#include "entity/cplayerinfo.h"
-#include "entity/cbasecombatweapon.h"
-#include "entity/cbasecombatcharacter.h"
-#include "entity/cbaseattributableitem.h"
+#include "entities/ccsplayer.h"
+#include "entities/cplayerinfo.h"
+#include "entities/cbasecombatweapon.h"
+#include "entities/cbasecombatcharacter.h"
+#include "entities/cbaseattributableitem.h"
 

@@ -43,7 +43,7 @@ bool __stdcall hooks::DoPostScreenSpaceEffects(const CViewSetup* pSetup)
 {
 	if (globals::localPlayer && interfaces::engine->IsInGame())
 	{
-		for (int i = 0; i < interfaces::glow->glowObjects.size; i++)
+		for (int i = 0; i < interfaces::glow->glowObjects.Count(); i++)
 		{
 			IGlowObjectManager::CGlowObject& object = interfaces::glow->glowObjects[i];
 

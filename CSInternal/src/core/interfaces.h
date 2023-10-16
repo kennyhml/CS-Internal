@@ -15,8 +15,7 @@
 #include "../csgo/interfaces/idebugoverlay.h"
 #include "../csgo/interfaces/isurface.h"
 #include "../csgo/interfaces/imodelinfo.h"
-
-
+#include "../csgo/interfaces/imemalloc.h"
 
 namespace interfaces
 {
@@ -40,4 +39,5 @@ namespace interfaces
 	inline IDebugOverlay* debugOverlay = nullptr;
 	inline ISurface* surface = nullptr;
 	inline IModelInfo* modelInfo = nullptr;
+	inline IMemAlloc* memAlloc = nullptr;
 }

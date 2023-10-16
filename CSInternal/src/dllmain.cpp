@@ -4,7 +4,7 @@
 #include <iostream>
 #include "csgo/sdk.h"
 #include "core/hooks.h"
-#include "csgo/entity/cweapondata.h"
+#include "csgo/entities/cweapondata.h"
 
 FILE* fConsole = nullptr;
 
@@ -20,6 +20,9 @@ void MainThread(HMODULE instance)
 	SetupNetvars();
 	hacks::esp::fonts::Init();
 	hooks::Init();
+
+	g_pMemAlloc = interfaces::memAlloc;
+	g_pMemAlloc->Alloc(1);
 
 	while (!GetAsyncKeyState(VK_DELETE) & 1) {
 		Sleep(5);

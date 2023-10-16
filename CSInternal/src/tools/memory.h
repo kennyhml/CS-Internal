@@ -48,5 +48,7 @@ namespace memory
 		inline Signature customMatInit("client.dll", "C6 86 ? ? ? ? ? FF 50 04", 2);
 		inline Signature customMats("client.dll", "83 BE ? ? ? ? ? 7F 67", 2);
 		inline Signature vDataProcessor("client.dll", "81 C7 ? ? ? ? 8B 4F 0C 8B 57 04 89 4C 24", 2);
+
+		inline Signature memAlloc("imemanager.dll", "74 26 A1 ?? ?? ?? ?? FF 33 8B 08", 3);
 	}
 }

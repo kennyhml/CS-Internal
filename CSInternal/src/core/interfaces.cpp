@@ -21,6 +21,10 @@ void interfaces::Init()
 	weapons = *reinterpret_cast<IWeaponSystem**>(memory::FindPattern(memory::signatures::weaponSystem));
 	clientMode = **reinterpret_cast<IClientMode***>(memory::FindPattern(memory::signatures::clientMode));
 	globals = **reinterpret_cast<IGlobalVarsBase***>(memory::FindPattern(memory::signatures::globals));
+
+	// two different ways to get the p_mMemAlloc singleton, GetProcAddress is more reliable tho.
+	// memAlloc = ***reinterpret_cast<IMemAlloc****>(memory::FindPattern(memory::signatures::memAlloc));
+	memAlloc = *reinterpret_cast<IMemAlloc**>(GetProcAddress(GetModuleHandleA("tier0.dll"), "g_pMemAlloc"));
 }
 
 template <typename T>

@@ -1,8 +1,8 @@
 #pragma once
 #include "../hacks.h"
 #include "../interfaces.h"
-#include "../../csgo/entity/cplayerinfo.h"
-#include "../../csgo/entity/cbaseattributableitem.h"
+#include "../../csgo/entities/cplayerinfo.h"
+#include "../../csgo/entities/cbaseattributableitem.h"
 #include <cwchar>
 #include <stdio.h>
 

@@ -11,7 +11,6 @@ enum hooks::ClientFrameStage : int32_t {
 	FRAME_RENDER_END
 };
 
-
 void __stdcall hooks::FrameStageNotify(ClientFrameStage currentStage)
 {
 	if (currentStage == FRAME_NET_UPDATE_POSTDATAUPDATE_START) {

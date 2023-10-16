@@ -1,5 +1,5 @@
 #pragma once
-#include "../csgo/entity/ccsplayer.h"
+#include "../csgo/entities/ccsplayer.h"
 
 namespace globals
 {

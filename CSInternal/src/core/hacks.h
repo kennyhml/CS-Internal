@@ -1,7 +1,7 @@
 #include "globals.h"
 #include "../csgo/cusercmd.h"
 #include "../csgo/interfaces/isurface.h"
-#include "../csgo/entity/cbaseattributableitem.h"
+#include "../csgo/entities/cbaseattributableitem.h"
 
 namespace hacks
 {
@@ -38,6 +38,7 @@ namespace hacks
 		using Skin = uint32_t;
 
 		Skin GetWeaponSkin(int32_t weaponID);
+		void ChangeKnifeModel(CBaseAttributableItem* knife);
 		bool SetSkin(CBaseAttributableItem* weapon, Skin skin);
 		void ForceUpdateWeapon(CBaseAttributableItem* weapon);
 		void Change();

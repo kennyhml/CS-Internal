@@ -1,6 +1,7 @@
 #pragma once
 #include "cbasecombatweapon.h"
 #include "../../tools/memory.h"
+#include <unordered_map>
 
 struct AttributeManager_t;
 
@@ -91,6 +92,34 @@ enum ItemDefinitionIndex
 	GLOVE_MOTORCYCLE = 5033,
 	GLOVE_SPECIALIST = 5034,
 	GLOVE_HYDRA = 5035
+};
+
+inline std::unordered_map<ItemDefinitionIndex, const char*> knifeModels
+{
+	{ItemDefinitionIndex::WEAPON_KNIFE, "models/weapons/v_knife_default_ct.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_T, "models/weapons/v_knife_default_t.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_FLIP, "models/weapons/v_knife_flip.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_FLIP, "models/weapons/v_knife_flip.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_GUT, "models/weapons/v_knife_gut.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_KARAMBIT, "models/weapons/v_knife_karam.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_M9_BAYONET, "models/weapons/v_knife_m9_bay.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_TACTICAL, "models/weapons/v_knife_tactical.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_FALCHION, "models/weapons/v_knife_falchion_advanced.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_SURVIVAL_BOWIE, "models/weapons/v_knife_survival_bowie.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_BUTTERFLY, "models/weapons/v_knife_butterfly.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_FALCHION, "models/weapons/v_knife_falchion_advanced.mdl"},
+	{ItemDefinitionIndex::WEAPON_KNIFE_PUSH, "models/weapons/v_knife_push.mdl"},
+	{ItemDefinitionIndex::WEAPON_BAYONET, "models/weapons/v_knife_bayonet.mdl"},
+};
+
+enum SkinIDs : int32_t
+{
+	RED_LAMINATE_AK = 14,
+	CASE_HARDENED_AK = 44,
+	SAFARI_MESH_AK = 72,
+	PREDATOR_AK = 170,
+	REDLINE_AK = 282,
+	ELITE_BUILD_AK = 422,
 };
 
 struct CBaseAttributableItem : public CBaseCombatWeapon

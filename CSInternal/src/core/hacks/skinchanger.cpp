@@ -1,26 +1,6 @@
 #include "../hacks.h"
 #include "../interfaces.h"
-#include "../../csgo/entity/cplayerinfo.h"
-#include "../../csgo/entity/cbaseviewmodel.h"
-#include <unordered_map>
-
-std::unordered_map<ItemDefinitionIndex, const char*> knifeModels
-{
-	{ItemDefinitionIndex::WEAPON_KNIFE, "models/weapons/v_knife_default_ct.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_T, "models/weapons/v_knife_default_t.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_FLIP, "models/weapons/v_knife_flip.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_FLIP, "models/weapons/v_knife_flip.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_GUT, "models/weapons/v_knife_gut.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_KARAMBIT, "models/weapons/v_knife_karam.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_M9_BAYONET, "models/weapons/v_knife_m9_bay.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_TACTICAL, "models/weapons/v_knife_tactical.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_FALCHION, "models/weapons/v_knife_falchion_advanced.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_SURVIVAL_BOWIE, "models/weapons/v_knife_survival_bowie.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_BUTTERFLY, "models/weapons/v_knife_butterfly.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_FALCHION, "models/weapons/v_knife_falchion_advanced.mdl"},
-	{ItemDefinitionIndex::WEAPON_KNIFE_PUSH, "models/weapons/v_knife_push.mdl"},
-	{ItemDefinitionIndex::WEAPON_BAYONET, "models/weapons/v_knife_bayonet.mdl"},
-};
+#include "../../csgo/entities/cbaseviewmodel.h"
 
 hacks::skins::Skin hacks::skins::GetWeaponSkin(int32_t weaponID)
 {
@@ -29,7 +9,7 @@ hacks::skins::Skin hacks::skins::GetWeaponSkin(int32_t weaponID)
 	case CClientClass::CDEagle:
 		return 711;
 	case CClientClass::CAK47:
-		return 44;
+		return SkinIDs::REDLINE_AK;
 	case CClientClass::CWeaponAWP:
 		return 38;
 	case CClientClass::CKnife:
@@ -43,13 +23,13 @@ hacks::skins::Skin hacks::skins::GetWeaponSkin(int32_t weaponID)
 void hacks::skins::ForceUpdateWeapon(CBaseAttributableItem* weapon)
 {
 	weapon->CustomMaterialInitialized() = (weapon->FallbackPaintKit() <= 0);
-	weapon->CustomMaterials().clear();
+	weapon->CustomMaterials().RemoveAll();
 
 	weapon->PostDataUpdate(DataUpdateType::DATA_UPDATE_CREATED);
 	weapon->OnDataChanged(DataUpdateType::DATA_UPDATE_CREATED);
 }
 
-void ChangeKnifeModel(CBaseAttributableItem* knife)
+void hacks::skins::ChangeKnifeModel(CBaseAttributableItem* knife)
 {
 	int viewModelHandle = globals::localPlayer->ViewModelHandle();
 	auto viewModel = interfaces::entityList->FromHandle<CBaseViewModel*>(viewModelHandle);
@@ -60,14 +40,14 @@ void ChangeKnifeModel(CBaseAttributableItem* knife)
 
 	if (!viewModel || viewModel->ModelIndex() == targetModelIndex) { return; }
 
-	std::cout << "[+] Need to update knife model!\n";
+	std::cout << "[+] Knife model needs to be updated...";
 	viewModel->ModelIndex() = targetModelIndex;
 	knife->ViewModelIndex() = targetModelIndex;
 	knife->ItemDefinitionIndex() = targetModelID;
 
 	knife->WorldModelIndex() = targetModelIndex + 1;
 	knife->ModelIndex() = targetModelIndex;
-	std::cout << "[+] Knife model updated!\n";
+	std::cout << "done!" << std::endl;
 }
 
 bool hacks::skins::SetSkin(CBaseAttributableItem* weapon, Skin skin)

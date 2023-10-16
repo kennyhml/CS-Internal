@@ -1,7 +1,7 @@
 #include "../hacks.h"
 #include "../interfaces.h"
-#include "../../csgo/entity/cbaseattributableitem.h"
-#include "../../csgo/entity/cplayerinfo.h"
+#include "../../csgo/entities/cbaseattributableitem.h"
+#include "../../csgo/entities/cplayerinfo.h"
 
 static bool ShouldEqualizeAimPunch()
 {
